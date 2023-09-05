@@ -1,0 +1,61 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- site__body -->
+		<div class="site__body">
+			<div class="page-header">
+				<div class="page-header__container container">
+
+					<div class="page-header__title">
+						<h1>حساب کاربری</h1></div>
+				</div>
+			</div>
+			<div class="block">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-lg-3 d-flex">
+							<div class="account-nav flex-grow-1">
+								<h4 class="account-nav__title">ناوبری</h4>
+								<ul>
+									<li class="account-nav__item"><a href="account-dashboard.html">داشبورد</a></li>
+									<li class="account-nav__item account-nav__item--active"><a href="account-profile.html">ویرایش پروفایل</a></li>
+									<li class="account-nav__item"><a href="account-orders.html">سابقه خرید</a></li>
+									<li class="account-nav__item"><a href="account-addresses.html">آدرس ها</a></li>
+									<li class="account-nav__item"><a href="account-password.html">رمز عبور</a></li>
+									<li class="account-nav__item"><a href="account-login.html">خروج</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-12 col-lg-9 mt-4 mt-lg-0">
+							<div class="card">
+								<div class="card-header">
+									<h5>ویرایش پروفایل</h5></div>
+								<div class="card-divider"></div>
+								<div class="card-body">
+									<div class="row no-gutters">
+										<div class="col-12 col-lg-7 col-xl-6">
+
+										 <form method="POST" dir="ltr">
+                                 {% csrf_token %}
+                                   <fieldset class="form-group">
+
+                               {{ updateform|crispy }}
+                          </fieldset>
+                                <div class="form-group">
+									<button type="submit" class="btn btn-primary mt-4">ویرایش</button>
+
+        </div>
+    </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- site__body / end -->
+{% endblock content %}

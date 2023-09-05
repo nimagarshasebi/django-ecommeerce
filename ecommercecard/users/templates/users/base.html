@@ -1,0 +1,477 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="format-detection" content="telephone=no">
+	<title>MAJAZI</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<!-- css -->
+	<link rel="stylesheet" href="{% static 'users/vendor/bootstrap-4.5.3/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/vendor/lightgallery-1.6.12/css/lightgallery.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/custome.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/owl.theme.default.min.css' %}">
+	<link rel="stylesheet" href="{% static 'users/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
+
+
+	<!-- js -->
+	<script src="{% static 'users/vendor/jquery-3.3.1/jquery.min.js' %}"></script>
+	<script src="{% static 'users/vendor/bootstrap-4.5.3/js/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'users/vendor/owl-carousel-2.3.4/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'users/vendor/nouislider-12.1.0/nouislider.min.js' %}"></script>
+	<script src="{% static 'users/vendor/lightgallery-1.6.12/js/lightgallery.min.js' %}"></script>
+	<script src="{% static 'users/vendor/lightgallery-1.6.12/js/lg-thumbnail.min.js' %}"></script>
+	<script src="{% static 'users/vendor/lightgallery-1.6.12/js/lg-zoom.min.js' %}"></script>
+	<script src="{% static 'users/js/number.js' %}"></script>
+	<script src="{% static 'users/js/main.js' %}"></script>
+	<script src="{% static 'users/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'users/js/cart.js' %}"></script>
+	<script src="{% static 'users/vendor/svg4everybody-2.1.9/svg4everybody.min.js' %}"></script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+	<!-- font - fontawesome -->
+	<link rel="stylesheet" href="{% static 'users/vendor/fontawesome-5.6.3/css/all.min.css' %}">
+	<!-- font - majazi -->
+	<link rel="stylesheet" href="{% static 'users/fonts/majazi/majazi.css' %}">
+
+</head>
+
+<body>
+	<!-- quickview-modal -->
+	<div id="quickview-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-xl">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<!-- quickview-modal / end -->
+	<!-- mobilemenu -->
+	<div class="mobilemenu">
+		<div class="mobilemenu__backdrop"></div>
+		<div class="mobilemenu__body">
+			<div class="mobilemenu__header">
+				<div class="mobilemenu__title">منو</div>
+				<button type="button" class="mobilemenu__close">
+					<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="27px">
+						<path d="M18,6h0a1,1,0,0,0-1.414,0L12,10.586,7.414,6A1,1,0,0,0,6,6H6A1,1,0,0,0,6,7.414L10.586,12,6,16.586A1,1,0,0,0,6,18H6a1,1,0,0,0,1.414,0L12,13.414,16.586,18A1,1,0,0,0,18,18h0a1,1,0,0,0,0-1.414L13.414,12,18,7.414A1,1,0,0,0,18,6Z"/></svg>
+				</button>
+			</div>
+			<div class="mobilemenu__content">
+				<ul class="mobile-links mobile-links--level--0" data-collapse data-collapse-opened-class="mobile-links__item--open">
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="shop-grid-3-columns-sidebar.html" class="mobile-links__item-link">دسته بندی محصولات</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="23px" height="23px">
+	<path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg>
+							</button>
+						</div>
+						<div class="mobile-links__item-sub-links" data-collapse-content>
+							<ul class="mobile-links mobile-links--level--1">
+{% for category in categories %}
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="{% url 'product-category' category.slug %}" class="mobile-links__item-link">{{category.name}}</a></div>
+								</li>
+{% endfor %}
+							</ul>
+						</div>
+					</li>
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="account-login.html" class="mobile-links__item-link">حساب کاربری</a>
+							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
+								<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="23px" height="23px">
+									<path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg>
+							</button>
+						</div>
+
+						<div class="mobile-links__item-sub-links" data-collapse-content>
+
+							<ul class="mobile-links mobile-links--level--1">
+                          {% if user.is_authenticated %}
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-dashboard.html" class="mobile-links__item-link">داشبورد</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="{% url 'profile' %}" class="mobile-links__item-link">ویرایش پروفایل</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-orders.html" class="mobile-links__item-link">سابقه خرید</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-addresses.html" class="mobile-links__item-link">دفتر آدرس</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-password.html" class="mobile-links__item-link">تغییر رمز عبور</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="{% url 'logout' %}" class="mobile-links__item-link">خروج</a></div>
+								</li>
+								{% else %}
+
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-login.html" class="mobile-links__item-link">ثبت نام</a></div>
+								</li>
+								<li class="mobile-links__item" data-collapse-item>
+									<div class="mobile-links__item-title"><a href="account-dashboard.html" class="mobile-links__item-link">ورود</a></div>
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+
+					</li>
+					<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="blog-classic.html" class="mobile-links__item-link">بلاگ</a>
+
+						</div>
+
+					</li>
+						<li class="mobile-links__item" data-collapse-item>
+						<div class="mobile-links__item-title"><a href="account-login.html" class="mobile-links__item-link">تماس و پشتیبانی</a>
+
+						</div>
+						</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- mobilemenu / end -->
+	<!-- site -->
+	<div class="site">
+		<!-- mobile site__header -->
+		<header class="site__header d-lg-none">
+			<div class="mobile-header mobile-header--sticky mobile-header--stuck">
+				<div class="mobile-header__panel">
+					<div class="container">
+						<div class="mobile-header__body">
+							<button class="mobile-header__menu-button">
+								<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="21px">
+									<rect y="11" width="24" height="2" rx="1"/><rect y="4" width="24" height="2" rx="1"/>
+									<rect y="18" width="24" height="2" rx="1"/></svg>
+							</button>
+							<a class="mobile-header__logo" href="{% url 'home' %}">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="basic" id="Layer_1" width="50%" height="50%" viewBox="0 0 120 20.5" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#3D474E;}
+</style>
+<g>
+	<path class="st0" d="M12.76,11.1c0,0.77-0.16,1.45-0.47,2.04c-0.31,0.59-0.74,1.07-1.27,1.46c-0.63,0.46-1.3,0.78-2.02,0.97   c-0.72,0.19-1.65,0.29-2.79,0.29H1.4V0.36h4.44c1.19,0,2.09,0.04,2.68,0.11c0.6,0.07,1.17,0.24,1.72,0.51   c0.6,0.3,1.04,0.69,1.32,1.17c0.28,0.48,0.42,1.05,0.42,1.7c0,0.73-0.21,1.38-0.62,1.96c-0.42,0.58-0.99,1.03-1.73,1.35v0.08   c1,0.25,1.77,0.71,2.32,1.37C12.49,9.28,12.76,10.11,12.76,11.1z M9.66,4.15c0-0.37-0.07-0.7-0.2-0.97S9.1,2.69,8.8,2.53   c-0.36-0.19-0.76-0.3-1.2-0.34C7.16,2.14,6.55,2.12,5.77,2.12H3.63v4.54h2.53c0.7,0,1.21-0.03,1.54-0.1   c0.33-0.07,0.67-0.2,1.02-0.41c0.34-0.2,0.58-0.46,0.72-0.79C9.59,5.03,9.66,4.63,9.66,4.15z M10.45,11.18   c0-0.58-0.09-1.06-0.27-1.44C10,9.36,9.63,9.04,9.08,8.78C8.73,8.6,8.35,8.49,7.93,8.45C7.52,8.4,6.92,8.37,6.16,8.37H3.63v5.72   h1.81c0.97,0,1.74-0.04,2.31-0.13c0.56-0.08,1.06-0.26,1.49-0.53c0.42-0.27,0.73-0.58,0.92-0.92   C10.35,12.17,10.45,11.73,10.45,11.18z"/>
+	<path class="st0" d="M24.71,15.85H22.6v-1.29c-0.65,0.53-1.27,0.93-1.86,1.2c-0.59,0.27-1.24,0.41-1.96,0.41   c-0.55,0-1.06-0.08-1.55-0.25c-0.48-0.17-0.91-0.43-1.27-0.79c-0.36-0.36-0.64-0.82-0.84-1.36c-0.2-0.55-0.3-1.21-0.3-2V4.23h2.11   v6.62c0,0.62,0.02,1.13,0.07,1.53c0.05,0.41,0.16,0.76,0.33,1.07c0.17,0.3,0.41,0.52,0.7,0.65c0.3,0.14,0.72,0.21,1.28,0.21   c0.52,0,1.07-0.14,1.65-0.41c0.59-0.27,1.12-0.6,1.61-1V4.23h2.11V15.85z"/>
+	<path class="st0" d="M37.65,4.23l-6.76,15.91h-2.26l2.25-4.85L26.31,4.23h2.28l3.43,8.6l3.42-8.6H37.65z"/>
+	<path class="st0" d="M37.6,15.85l5.65-15.49h2.74l5.65,15.49h-2.35l-1.52-4.33h-6.4l-1.52,4.33H37.6z M47.15,9.77l-2.59-7.3   l-2.58,7.3H47.15z"/>
+	<path class="st0" d="M58.05,16.11c-0.86,0-1.65-0.12-2.37-0.37c-0.72-0.25-1.34-0.62-1.86-1.12c-0.52-0.5-0.92-1.13-1.2-1.89   s-0.43-1.65-0.43-2.68c0-1.02,0.15-1.9,0.44-2.64s0.69-1.37,1.19-1.87c0.49-0.51,1.11-0.9,1.85-1.17c0.74-0.27,1.53-0.41,2.38-0.41   c0.69,0,1.36,0.09,2,0.27c0.64,0.18,1.21,0.39,1.72,0.62v2.19h-0.12c-0.15-0.12-0.34-0.25-0.58-0.41   c-0.24-0.15-0.52-0.31-0.86-0.47c-0.29-0.14-0.64-0.26-1.04-0.36c-0.4-0.1-0.78-0.16-1.15-0.16c-1.1,0-1.97,0.38-2.64,1.15   c-0.66,0.77-1,1.85-1,3.25c0,1.37,0.32,2.44,0.96,3.21s1.53,1.15,2.67,1.15c0.69,0,1.35-0.13,1.97-0.39   c0.62-0.26,1.17-0.6,1.65-1.02h0.12v2.2c-0.21,0.09-0.47,0.2-0.79,0.33c-0.31,0.13-0.6,0.22-0.85,0.29   c-0.36,0.1-0.68,0.17-0.97,0.22C58.87,16.09,58.5,16.11,58.05,16.11z"/>
+	<path class="st0" d="M68.62,16.11c-0.86,0-1.65-0.12-2.37-0.37c-0.72-0.25-1.34-0.62-1.86-1.12c-0.52-0.5-0.92-1.13-1.2-1.89   c-0.28-0.76-0.43-1.65-0.43-2.68c0-1.02,0.15-1.9,0.44-2.64s0.69-1.37,1.19-1.87c0.49-0.51,1.11-0.9,1.85-1.17   c0.74-0.27,1.53-0.41,2.38-0.41c0.69,0,1.36,0.09,2,0.27c0.64,0.18,1.21,0.39,1.72,0.62v2.19h-0.12c-0.15-0.12-0.34-0.25-0.58-0.41   c-0.24-0.15-0.52-0.31-0.86-0.47c-0.29-0.14-0.64-0.26-1.04-0.36c-0.4-0.1-0.78-0.16-1.15-0.16c-1.1,0-1.97,0.38-2.64,1.15   c-0.66,0.77-1,1.85-1,3.25c0,1.37,0.32,2.44,0.96,3.21s1.53,1.15,2.67,1.15c0.69,0,1.35-0.13,1.97-0.39   c0.62-0.26,1.17-0.6,1.65-1.02h0.12v2.2c-0.21,0.09-0.47,0.2-0.79,0.33c-0.31,0.13-0.6,0.22-0.85,0.29   c-0.36,0.1-0.68,0.17-0.97,0.22C69.43,16.09,69.07,16.11,68.62,16.11z"/>
+	<path class="st0" d="M84.59,10.05c0,1.96-0.51,3.47-1.53,4.53c-1.02,1.06-2.38,1.6-4.07,1.6c-1.75,0-3.12-0.55-4.12-1.65   c-1-1.1-1.5-2.59-1.5-4.48c0-1.94,0.52-3.45,1.55-4.52s2.39-1.61,4.08-1.61c1.69,0,3.05,0.54,4.07,1.61   C84.08,6.59,84.59,8.1,84.59,10.05z M82.41,10.05c0-1.5-0.3-2.62-0.89-3.35s-1.44-1.1-2.53-1.1c-1.1,0-1.95,0.37-2.55,1.1   c-0.6,0.73-0.89,1.85-0.89,3.35c0,1.46,0.3,2.56,0.89,3.31c0.59,0.75,1.44,1.13,2.55,1.13c1.09,0,1.93-0.37,2.53-1.11   C82.11,12.64,82.41,11.53,82.41,10.05z"/>
+	<path class="st0" d="M96.55,15.85h-2.11v-1.29c-0.65,0.53-1.27,0.93-1.86,1.2c-0.59,0.27-1.24,0.41-1.96,0.41   c-0.55,0-1.06-0.08-1.55-0.25c-0.48-0.17-0.91-0.43-1.27-0.79c-0.36-0.36-0.64-0.82-0.84-1.36c-0.2-0.55-0.3-1.21-0.3-2V4.23h2.11   v6.62c0,0.62,0.03,1.13,0.07,1.53c0.05,0.41,0.16,0.76,0.33,1.07c0.17,0.3,0.41,0.52,0.7,0.65c0.3,0.14,0.72,0.21,1.28,0.21   c0.52,0,1.07-0.14,1.65-0.41c0.59-0.27,1.12-0.6,1.61-1V4.23h2.11V15.85z"/>
+	<path class="st0" d="M109.49,15.85h-2.11V9.24c0-0.53-0.03-1.03-0.08-1.49c-0.06-0.46-0.16-0.83-0.32-1.11   c-0.17-0.29-0.41-0.51-0.72-0.65c-0.31-0.14-0.73-0.21-1.26-0.21c-0.53,0-1.07,0.13-1.63,0.39c-0.56,0.26-1.1,0.6-1.64,1.01v8.68   h-2.11V4.23h2.11v1.29c0.63-0.52,1.25-0.92,1.87-1.2c0.62-0.28,1.26-0.42,1.95-0.42c1.24,0,2.2,0.38,2.9,1.13   c0.7,0.75,1.05,1.84,1.05,3.27V15.85z"/>
+	<path class="st0" d="M116.26,16.08c-1.16,0-2.05-0.3-2.7-0.91c-0.64-0.61-0.97-1.57-0.97-2.88V5.86h-1.43V4.23h1.43V0.89h2.11v3.34   h3.89v1.62h-3.89v5.52c0,0.59,0.01,1.04,0.03,1.36c0.02,0.32,0.11,0.62,0.26,0.89c0.13,0.24,0.33,0.42,0.62,0.55   c0.28,0.12,0.67,0.18,1.16,0.18c0.34,0,0.68-0.05,1-0.14s0.56-0.17,0.7-0.23h0.12v1.76c-0.4,0.1-0.8,0.19-1.21,0.24   C116.98,16.05,116.6,16.08,116.26,16.08z"/>
+</g>
+</svg>					</a>
+							<div class="mobile-header__search">
+								<form class="mobile-header__search-form" action="">
+									<input class="mobile-header__search-input" name="search" placeholder="جستجو از میان 10,000 محصول" aria-label="Site search" type="text" autocomplete="off">
+									<button class="mobile-header__search-button mobile-header__search-button--submit" type="submit">
+									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+										<path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/></svg>
+									</button>
+									<button class="mobile-header__search-button mobile-header__search-button--close" type="button">
+										<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+											<path d="M18,6h0a1,1,0,0,0-1.414,0L12,10.586,7.414,6A1,1,0,0,0,6,6H6A1,1,0,0,0,6,7.414L10.586,12,6,16.586A1,1,0,0,0,6,18H6a1,1,0,0,0,1.414,0L12,13.414,16.586,18A1,1,0,0,0,18,18h0a1,1,0,0,0,0-1.414L13.414,12,18,7.414A1,1,0,0,0,18,6Z"/></svg>
+									</button>
+									<div class="mobile-header__search-body"></div>
+								</form>
+							</div>
+							<div class="mobile-header__indicators">
+								<div class="indicator indicator--mobile-search indicator--mobile d-sm-none">
+									<button class="indicator__button"><svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px"><path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/></svg></span></button>
+								</div>
+								<div class="indicator indicator--mobile d-sm-flex d-none"><a href="wishlist.html" class="indicator__button"><span class="indicator__area">
+									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+										<path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"/>
+									</svg> <span class="indicator__value">0</span></span></a>
+								</div>
+								<div class="indicator indicator--mobile"><a href="cart.html" class="indicator__button"><span class="indicator__area">
+									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+									<path d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z"/></svg>
+									<span class="indicator__value">3</span></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- mobile site__header / end -->
+		<!-- desktop site__header -->
+		<header class="site__header d-lg-block d-none">
+			<div class="site-header">
+
+				<div class="site-header__middle container">
+					<div class="site-header__logo">
+						<a href="{% url 'home' %}">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="basic" id="Layer_1" width="90%" height="90%" viewBox="0 0 120 20.5" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#3D474E;}
+</style>
+<g>
+	<path class="st0" d="M12.76,11.1c0,0.77-0.16,1.45-0.47,2.04c-0.31,0.59-0.74,1.07-1.27,1.46c-0.63,0.46-1.3,0.78-2.02,0.97   c-0.72,0.19-1.65,0.29-2.79,0.29H1.4V0.36h4.44c1.19,0,2.09,0.04,2.68,0.11c0.6,0.07,1.17,0.24,1.72,0.51   c0.6,0.3,1.04,0.69,1.32,1.17c0.28,0.48,0.42,1.05,0.42,1.7c0,0.73-0.21,1.38-0.62,1.96c-0.42,0.58-0.99,1.03-1.73,1.35v0.08   c1,0.25,1.77,0.71,2.32,1.37C12.49,9.28,12.76,10.11,12.76,11.1z M9.66,4.15c0-0.37-0.07-0.7-0.2-0.97S9.1,2.69,8.8,2.53   c-0.36-0.19-0.76-0.3-1.2-0.34C7.16,2.14,6.55,2.12,5.77,2.12H3.63v4.54h2.53c0.7,0,1.21-0.03,1.54-0.1   c0.33-0.07,0.67-0.2,1.02-0.41c0.34-0.2,0.58-0.46,0.72-0.79C9.59,5.03,9.66,4.63,9.66,4.15z M10.45,11.18   c0-0.58-0.09-1.06-0.27-1.44C10,9.36,9.63,9.04,9.08,8.78C8.73,8.6,8.35,8.49,7.93,8.45C7.52,8.4,6.92,8.37,6.16,8.37H3.63v5.72   h1.81c0.97,0,1.74-0.04,2.31-0.13c0.56-0.08,1.06-0.26,1.49-0.53c0.42-0.27,0.73-0.58,0.92-0.92   C10.35,12.17,10.45,11.73,10.45,11.18z"/>
+	<path class="st0" d="M24.71,15.85H22.6v-1.29c-0.65,0.53-1.27,0.93-1.86,1.2c-0.59,0.27-1.24,0.41-1.96,0.41   c-0.55,0-1.06-0.08-1.55-0.25c-0.48-0.17-0.91-0.43-1.27-0.79c-0.36-0.36-0.64-0.82-0.84-1.36c-0.2-0.55-0.3-1.21-0.3-2V4.23h2.11   v6.62c0,0.62,0.02,1.13,0.07,1.53c0.05,0.41,0.16,0.76,0.33,1.07c0.17,0.3,0.41,0.52,0.7,0.65c0.3,0.14,0.72,0.21,1.28,0.21   c0.52,0,1.07-0.14,1.65-0.41c0.59-0.27,1.12-0.6,1.61-1V4.23h2.11V15.85z"/>
+	<path class="st0" d="M37.65,4.23l-6.76,15.91h-2.26l2.25-4.85L26.31,4.23h2.28l3.43,8.6l3.42-8.6H37.65z"/>
+	<path class="st0" d="M37.6,15.85l5.65-15.49h2.74l5.65,15.49h-2.35l-1.52-4.33h-6.4l-1.52,4.33H37.6z M47.15,9.77l-2.59-7.3   l-2.58,7.3H47.15z"/>
+	<path class="st0" d="M58.05,16.11c-0.86,0-1.65-0.12-2.37-0.37c-0.72-0.25-1.34-0.62-1.86-1.12c-0.52-0.5-0.92-1.13-1.2-1.89   s-0.43-1.65-0.43-2.68c0-1.02,0.15-1.9,0.44-2.64s0.69-1.37,1.19-1.87c0.49-0.51,1.11-0.9,1.85-1.17c0.74-0.27,1.53-0.41,2.38-0.41   c0.69,0,1.36,0.09,2,0.27c0.64,0.18,1.21,0.39,1.72,0.62v2.19h-0.12c-0.15-0.12-0.34-0.25-0.58-0.41   c-0.24-0.15-0.52-0.31-0.86-0.47c-0.29-0.14-0.64-0.26-1.04-0.36c-0.4-0.1-0.78-0.16-1.15-0.16c-1.1,0-1.97,0.38-2.64,1.15   c-0.66,0.77-1,1.85-1,3.25c0,1.37,0.32,2.44,0.96,3.21s1.53,1.15,2.67,1.15c0.69,0,1.35-0.13,1.97-0.39   c0.62-0.26,1.17-0.6,1.65-1.02h0.12v2.2c-0.21,0.09-0.47,0.2-0.79,0.33c-0.31,0.13-0.6,0.22-0.85,0.29   c-0.36,0.1-0.68,0.17-0.97,0.22C58.87,16.09,58.5,16.11,58.05,16.11z"/>
+	<path class="st0" d="M68.62,16.11c-0.86,0-1.65-0.12-2.37-0.37c-0.72-0.25-1.34-0.62-1.86-1.12c-0.52-0.5-0.92-1.13-1.2-1.89   c-0.28-0.76-0.43-1.65-0.43-2.68c0-1.02,0.15-1.9,0.44-2.64s0.69-1.37,1.19-1.87c0.49-0.51,1.11-0.9,1.85-1.17   c0.74-0.27,1.53-0.41,2.38-0.41c0.69,0,1.36,0.09,2,0.27c0.64,0.18,1.21,0.39,1.72,0.62v2.19h-0.12c-0.15-0.12-0.34-0.25-0.58-0.41   c-0.24-0.15-0.52-0.31-0.86-0.47c-0.29-0.14-0.64-0.26-1.04-0.36c-0.4-0.1-0.78-0.16-1.15-0.16c-1.1,0-1.97,0.38-2.64,1.15   c-0.66,0.77-1,1.85-1,3.25c0,1.37,0.32,2.44,0.96,3.21s1.53,1.15,2.67,1.15c0.69,0,1.35-0.13,1.97-0.39   c0.62-0.26,1.17-0.6,1.65-1.02h0.12v2.2c-0.21,0.09-0.47,0.2-0.79,0.33c-0.31,0.13-0.6,0.22-0.85,0.29   c-0.36,0.1-0.68,0.17-0.97,0.22C69.43,16.09,69.07,16.11,68.62,16.11z"/>
+	<path class="st0" d="M84.59,10.05c0,1.96-0.51,3.47-1.53,4.53c-1.02,1.06-2.38,1.6-4.07,1.6c-1.75,0-3.12-0.55-4.12-1.65   c-1-1.1-1.5-2.59-1.5-4.48c0-1.94,0.52-3.45,1.55-4.52s2.39-1.61,4.08-1.61c1.69,0,3.05,0.54,4.07,1.61   C84.08,6.59,84.59,8.1,84.59,10.05z M82.41,10.05c0-1.5-0.3-2.62-0.89-3.35s-1.44-1.1-2.53-1.1c-1.1,0-1.95,0.37-2.55,1.1   c-0.6,0.73-0.89,1.85-0.89,3.35c0,1.46,0.3,2.56,0.89,3.31c0.59,0.75,1.44,1.13,2.55,1.13c1.09,0,1.93-0.37,2.53-1.11   C82.11,12.64,82.41,11.53,82.41,10.05z"/>
+	<path class="st0" d="M96.55,15.85h-2.11v-1.29c-0.65,0.53-1.27,0.93-1.86,1.2c-0.59,0.27-1.24,0.41-1.96,0.41   c-0.55,0-1.06-0.08-1.55-0.25c-0.48-0.17-0.91-0.43-1.27-0.79c-0.36-0.36-0.64-0.82-0.84-1.36c-0.2-0.55-0.3-1.21-0.3-2V4.23h2.11   v6.62c0,0.62,0.03,1.13,0.07,1.53c0.05,0.41,0.16,0.76,0.33,1.07c0.17,0.3,0.41,0.52,0.7,0.65c0.3,0.14,0.72,0.21,1.28,0.21   c0.52,0,1.07-0.14,1.65-0.41c0.59-0.27,1.12-0.6,1.61-1V4.23h2.11V15.85z"/>
+	<path class="st0" d="M109.49,15.85h-2.11V9.24c0-0.53-0.03-1.03-0.08-1.49c-0.06-0.46-0.16-0.83-0.32-1.11   c-0.17-0.29-0.41-0.51-0.72-0.65c-0.31-0.14-0.73-0.21-1.26-0.21c-0.53,0-1.07,0.13-1.63,0.39c-0.56,0.26-1.1,0.6-1.64,1.01v8.68   h-2.11V4.23h2.11v1.29c0.63-0.52,1.25-0.92,1.87-1.2c0.62-0.28,1.26-0.42,1.95-0.42c1.24,0,2.2,0.38,2.9,1.13   c0.7,0.75,1.05,1.84,1.05,3.27V15.85z"/>
+	<path class="st0" d="M116.26,16.08c-1.16,0-2.05-0.3-2.7-0.91c-0.64-0.61-0.97-1.57-0.97-2.88V5.86h-1.43V4.23h1.43V0.89h2.11v3.34   h3.89v1.62h-3.89v5.52c0,0.59,0.01,1.04,0.03,1.36c0.02,0.32,0.11,0.62,0.26,0.89c0.13,0.24,0.33,0.42,0.62,0.55   c0.28,0.12,0.67,0.18,1.16,0.18c0.34,0,0.68-0.05,1-0.14s0.56-0.17,0.7-0.23h0.12v1.76c-0.4,0.1-0.8,0.19-1.21,0.24   C116.98,16.05,116.6,16.08,116.26,16.08z"/>
+</g>
+</svg>
+						</a>
+					</div>
+					<div class="site-header__search">
+						<div class="search">
+							<form class="search__form" action="">
+								<input class="search__input" name="search" placeholder="جستجو از میان 10,000 محصول" aria-label="Site search" type="text" autocomplete="off">
+								<button class="search__button" type="submit">
+									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+										<path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"/>
+									</svg>
+								</button>
+								<div class="search__border"></div>
+							</form>
+						</div>
+					</div>
+					<div class="site-header__phone">
+						<div class="site-header__phone-title">خدمات مشتری</div>
+						<div class="site-header__phone-number"><span class="ltr_text">(800) 060-0730</span></div>
+					</div>
+				</div>
+				<div class="site-header__nav-panel">
+					<div class="nav-panel">
+						<div class="nav-panel__container container">
+							<div class="nav-panel__row">
+								<div class="nav-panel__departments">
+
+								</div>
+								<!-- .nav-links -->
+								<div class="nav-panel__nav-links nav-links">
+									<ul class="nav-links__list">
+										<li class="nav-links__item nav-links__item--with-submenu"><a href="shop-grid-3-columns-sidebar.html"><span>دسته بندی محصولات <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="18px"><path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg></span></a>
+											<div class="nav-links__menu">
+												<!-- .menu -->
+												<ul class="menu menu--layout--classic">
+													{% for category in categories %}
+													<li><a href="{% url 'product-category' category.slug %}">{{category.name}}</a></li>
+													{% endfor %}
+
+												</ul>
+												<!-- .menu / end -->
+											</div>
+										</li>
+										<li class="nav-links__item nav-links__item--with-submenu"><a href="account-login.html"><span>حساب کاربری <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="18px"><path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg></span></a>
+											<div class="nav-links__menu">
+												<!-- .menu -->
+												<ul class="menu menu--layout--classic">
+													{% if user.is_authenticated %}
+
+													<li><a href="account-dashboard.html">داشبورد</a></li>
+													<li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
+													<li><a href="account-orders.html">سابقه خرید</a></li>
+													<li><a href="account-addresses.html">دفتر آدرس</a></li>
+													<li><a href="account-password.html">تغییر رمز عبور</a></li>
+													<li><a href="{% url 'logout' %}">خروج</a></li>
+													{% else %}
+													<li><a href="{% url 'register' %}">ثبت نام</a></li>
+													<li><a href="{% url 'login' %}">ورود</a></li>
+													{% endif %}
+												</ul>
+												<!-- .menu / end -->
+											</div>
+										</li>
+										<li class="nav-links__item nav-links__item--with-submenu"><a href="blog-classic.html"><span>بلاگ <svg class="nav-links__arrow" width="9px" height="6px"><use xlink:href="images/sprite.svg#arrow-rounded-down-9x6"></use></svg></span></a>
+											<div class="nav-links__menu">
+												<!-- .menu -->
+												<ul class="menu menu--layout--classic">
+													<li><a href="blog-classic.html">بلاگ کلاسیک</a></li>
+													<li><a href="blog-grid.html">بلاگ توری</a></li>
+													<li><a href="blog-list.html">بلاگ لیست</a></li>
+													<li><a href="blog-right-sidebar.html">بلاگ نوار کناری راست</a></li>
+													<li><a href="post.html">صفحه مطلب بلاگ</a></li>
+													<li><a href="post-without-sidebar.html">مطلب بدون نوار کناری</a></li>
+												</ul>
+												<!-- .menu / end -->
+											</div>
+										</li>
+										<li class="nav-links__item"><a href="https://www.rtl-theme.com"><span>تماس و پشتیبانی</span></a></li>
+									</ul>
+								</div>
+								<!-- .nav-links / end -->
+							<!--	<div class="nav-panel__indicators">
+									<div class="indicator"><a href="{% url 'cart:cart_detail' %}" class="indicator__button">
+										<span class="indicator__area">
+											<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+											<path d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z"/></svg>
+											<span class="indicator__value">0</span>
+										</span></a></div>
+
+								</div>
+							</div>-->
+								<div class="nav-panel__indicators">
+									<!--<div class="indicator"><a href="wishlist.html" class="indicator__button"><span class="indicator__area"><svg width="20px" height="20px"><use xlink:href="images/sprite.svg#heart-20"></use></svg> <span class="indicator__value">0</span></span></a></div>-->
+									<div class="indicator indicator--trigger--click">
+                                        <a href="{% url 'cart:cart_detail' %}" class="indicator__button">
+                                            <span class="indicator__area">
+											<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
+											<path d="M21,6H18A6,6,0,0,0,6,6H3A3,3,0,0,0,0,9V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V9A3,3,0,0,0,21,6ZM12,2a4,4,0,0,1,4,4H8A4,4,0,0,1,12,2ZM22,19a3,3,0,0,1-3,3H5a3,3,0,0,1-3-3V9A1,1,0,0,1,3,8H6v2a1,1,0,0,0,2,0V8h8v2a1,1,0,0,0,2,0V8h3a1,1,0,0,1,1,1Z"/>
+                                                </svg>
+											<span class="indicator__value">
+                                                {% with total_items=cart|length %}
+                                                {% if cart|length > 0 %}
+                                        {{ total_items }}
+                                                {% else %}
+                                                0
+                                                {% endif %}
+                                                {% endwith %}
+                                            </span>
+                                            </span>
+                                        </a>
+										<div class="indicator__dropdown">
+											<!-- .dropcart -->
+											<div class="dropcart">
+												<div class="dropcart__products-list">
+                                                    {% for item in cart %}
+													<div class="dropcart__product">
+														<div class="dropcart__product-image">
+															<a href="{% url 'product-detail' item.product.slug %}"><img src="{{item.product.product_image.url}}" alt=""></a>
+														</div>
+														<div class="dropcart__product-info">
+															<div class="dropcart__product-name"><a href="{% url 'product-detail' item.product.slug %}">{{item.product.title}}</a></div>
+															<!--<ul class="dropcart__product-options">
+																<li>رنگ: زرد</li>
+																<li>جنس: آلومینیوم</li>
+															</ul>-->
+															<div class="dropcart__product-meta">
+                                                                <span class="dropcart__product-quantity">{{item.update_product_count_form.product_count}}</span> × <span class="dropcart__product-price">{{item.price}} تومان </span>
+                                                            </div>
+														</div>
+													</div>
+													{% endfor %}
+												</div>
+												<div class="dropcart__totals">
+													<table>
+														<tr>
+															<th>جمع جزء</th>
+															<td>5,877,000 تومان</td>
+														</tr>
+														<tr>
+															<th>حمل و نقل</th>
+															<td>25,000 تومان</td>
+														</tr>
+														<tr>
+															<th>مالیات</th>
+															<td>0 تومان</td>
+														</tr>
+														<tr>
+															<th>جمع کل</th>
+															<td>{{ cart.get_total_price }}</td>
+														</tr>
+													</table>
+												</div>
+												<div class="dropcart__buttons"><a class="btn btn-secondary" href="{% url 'cart:cart_detail'  %}">مشاهده سبد</a> <a class="btn btn-primary" href="checkout.html">پرداخت</a></div>
+											</div>
+											<!-- .dropcart / end -->
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- desktop site__header / end -->
+        {% block content %}
+        {% endblock %}
+        <!-- site__footer -->
+		<footer class="site__footer">
+			<div class="site-footer">
+				<div class="container">
+					<div class="site-footer__widgets">
+						<div class="row">
+							<div class="col-12 col-md-6 col-lg-4">
+								<div class="site-footer__widget footer-contacts">
+									<h5 class="footer-contacts__title">تماس با ما</h5>
+									<div class="footer-contacts__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</div>
+									<ul class="footer-contacts__contacts">
+										<li><i class="footer-contacts__icon fas fa-globe-americas"></i> تبریز، چهارراه آبرسان، برج بلور، طبقه 456</li>
+										<li><i class="footer-contacts__icon far fa-envelope"></i> stroyka@example.com</li>
+										<li><i class="footer-contacts__icon fas fa-mobile-alt"></i> <span class="ltr_text">(800) 060-0730</span>, <span class="ltr_text">(800) 060-0730</span></li>
+										<li><i class="footer-contacts__icon far fa-clock"></i> شنبه - پنجشنبه : 10 صبح - 7 عصر</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-6 col-md-3 col-lg-2">
+								<div class="site-footer__widget footer-links">
+									<h5 class="footer-links__title">اطلاعات</h5>
+									<ul class="footer-links__list">
+										<li class="footer-links__item"><a href="" class="footer-links__link">حریم خصوصی</a></li>
+										<li class="footer-links__item"><a href="" class="footer-links__link">درباره ما</a></li>
+										<li class="footer-links__item"><a href="" class="footer-links__link">تماس با ما</a></li>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-6 col-md-3 col-lg-2">
+								<div class="site-footer__widget footer-links">
+									<h5 class="footer-links__title">حساب کاربری</h5>
+									<ul class="footer-links__list">
+
+										<li class="footer-links__item"><a href="" class="footer-links__link">سابقه خرید</a></li>
+										<li class="footer-links__item"><a href="" class="footer-links__link">علاقه‌مندی‌ها</a></li>
+										<li class="footer-links__item"><a href="" class="footer-links__link">خبرنامه</a></li>
+										<li class="footer-links__item"><a href="" class="footer-links__link">کارت های هدیه</a></li>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-12 col-md-12 col-lg-4">
+								<div class="site-footer__widget footer-newsletter">
+									<h5 class="footer-newsletter__title">خبرنامه</h5>
+									<div class="footer-newsletter__text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک</div>
+									<form action="" class="footer-newsletter__form">
+										<label class="sr-only" for="footer-newsletter-address">آدرس ایمیل</label>
+										<input type="text" class="footer-newsletter__form-input form-control" id="footer-newsletter-address" placeholder="... آدرس ایمیل" dir="ltr">
+										<button class="footer-newsletter__form-button btn btn-primary">اشتراک</button>
+									</form>
+									<div class="footer-newsletter__text footer-newsletter__text--social">ما را در شبکه های اجتماعی دنبال کنید</div>
+									<ul class="footer-newsletter__social-links">
+										<li class="footer-newsletter__social-link footer-newsletter__social-link--facebook"><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+										<li class="footer-newsletter__social-link footer-newsletter__social-link--twitter"><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+										<li class="footer-newsletter__social-link footer-newsletter__social-link--youtube"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+										<li class="footer-newsletter__social-link footer-newsletter__social-link--instagram"><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+										<li class="footer-newsletter__social-link footer-newsletter__social-link--rss"><a href="#" target="_blank"><i class="fas fa-rss"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="site-footer__bottom">
+						<div class="site-footer__copyright">ارائه شده در وب‌سایت <a href="#" target="_blank"></a></div>
+						<div class="site-footer__payments"><img src="images/payments.png" alt=""></div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- site__footer / end -->
+	</div>
+	<!-- site / end -->
+</body>
+
+</html>

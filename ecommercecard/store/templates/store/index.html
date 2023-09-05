@@ -1,0 +1,362 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="site">
+		<!-- site__body -->
+		<div class="site__body">
+			<!-- .block-slideshow -->
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+	  {% for img in slideshowimg %}
+	      {% if forloop.first %}
+              <div class="carousel-item active">
+          {% else %}
+              <div class="carousel-item">
+		  {% endif %}
+                  <img class="d-block w-100" src="{{img.slideshow_image.url}}" >
+              </div>
+	  {% endfor %}
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  </div>
+</div>
+			<!-- .block-slideshow / end -->
+			<!-- .block-features -->
+			<div class="block block-features block-features--layout--classic">
+				<div class="container">
+					<div class="block-features__list">
+						<div class="block-features__item">
+							<div class="block-features__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" height="48px" viewBox="0 0 24 24" width="48px" data-name="Layer 1"><path d="m9 24h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2z"/><path d="m7 20h-6a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2z"/><path d="m5 16h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2z"/><path d="m13 23.955a1 1 0 0 1 -.089-2 10 10 0 1 0 -10.87-10.865 1 1 0 0 1 -1.992-.18 12 12 0 0 1 23.951 1.09 11.934 11.934 0 0 1 -10.91 11.951c-.03.003-.061.004-.09.004z"/><path d="m12 6a1 1 0 0 0 -1 1v5a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414l-2.707-2.707v-4.586a1 1 0 0 0 -1-1z"/></svg>
+							</div>
+							<div class="block-features__content">
+								<div class="block-features__title">خرید و تحویل سریع</div>
+								<div class="block-features__subtitle"> سی دقیقه تا یک ساعت</div>
+							</div>
+						</div>
+						<div class="block-features__divider"></div>
+						<div class="block-features__item">
+							<div class="block-features__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" height="48px" viewBox="0 0 24 24" width="48px" data-name="Layer 1"><path d="m14.6 21.3c-.3.226-.619.464-.89.7h2.29a1 1 0 0 1 0 2h-4a1 1 0 0 1 -1-1c0-1.5 1.275-2.456 2.4-3.3.75-.562 1.6-1.2 1.6-1.7a1 1 0 0 0 -2 0 1 1 0 0 1 -2 0 3 3 0 0 1 6 0c0 1.5-1.275 2.456-2.4 3.3zm8.4-6.3a1 1 0 0 0 -1 1v3h-1a1 1 0 0 1 -1-1v-2a1 1 0 0 0 -2 0v2a3 3 0 0 0 3 3h1v2a1 1 0 0 0 2 0v-7a1 1 0 0 0 -1-1zm-10-3v-5a1 1 0 0 0 -2 0v4h-3a1 1 0 0 0 0 2h4a1 1 0 0 0 1-1zm10-10a1 1 0 0 0 -1 1v2.374a12 12 0 1 0 -14.364 17.808 1.015 1.015 0 0 0 .364.068 1 1 0 0 0 .364-1.932 10 10 0 1 1 12.272-14.318h-2.636a1 1 0 0 0 0 2h3a3 3 0 0 0 3-3v-3a1 1 0 0 0 -1-1z"/></svg>
+							</div>
+							<div class="block-features__content">
+								<div class="block-features__title">پشتیبانی 24 ساعته</div>
+								<div class="block-features__subtitle">هر زمان تماس بگیرید</div>
+							</div>
+						</div>
+						<div class="block-features__divider"></div>
+						<div class="block-features__item">
+							<div class="block-features__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="48px" height="48px"><path d="M18.581,2.14,12.316.051a1,1,0,0,0-.632,0L5.419,2.14A4.993,4.993,0,0,0,2,6.883V12c0,7.563,9.2,11.74,9.594,11.914a1,1,0,0,0,.812,0C12.8,23.74,22,19.563,22,12V6.883A4.993,4.993,0,0,0,18.581,2.14ZM20,12c0,5.455-6.319,9.033-8,9.889-1.683-.853-8-4.42-8-9.889V6.883A3,3,0,0,1,6.052,4.037L12,2.054l5.948,1.983A3,3,0,0,1,20,6.883Z"/><path d="M15.3,8.3,11.112,12.5,8.868,10.16a1,1,0,1,0-1.441,1.386l2.306,2.4a1.872,1.872,0,0,0,1.345.6h.033a1.873,1.873,0,0,0,1.335-.553l4.272-4.272A1,1,0,0,0,15.3,8.3Z"/></svg>
+							</div>
+							<div class="block-features__content">
+								<div class="block-features__title">پرداخت های امن</div>
+								<div class="block-features__subtitle">100% امن</div>
+							</div>
+						</div>
+
+						<div class="block-features__item">
+							<div class="block-features__icon">
+							<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="48px" height="48px"><path d="M12,24c-1.626,0-3.16-.714-4.208-1.959-1.54,.176-3.127-.405-4.277-1.555-1.149-1.15-1.729-2.74-1.59-4.362-1.211-.964-1.925-2.498-1.925-4.124s.714-3.16,1.96-4.208c-.175-1.537,.405-3.127,1.555-4.277,1.15-1.15,2.737-1.733,4.361-1.59,.964-1.21,2.498-1.925,4.124-1.925s3.16,.714,4.208,1.959c1.542-.173,3.127,.405,4.277,1.555,1.149,1.15,1.729,2.74,1.59,4.362,1.211,.964,1.925,2.498,1.925,4.124s-.714,3.16-1.96,4.208c.175,1.537-.405,3.127-1.555,4.277-1.151,1.15-2.741,1.726-4.361,1.59-.964,1.21-2.498,1.925-4.124,1.925Zm-4.127-3.924c.561,0,1.081,.241,1.448,.676,.668,.793,1.644,1.248,2.679,1.248s2.011-.455,2.679-1.248c.403-.479,.99-.721,1.616-.67,1.034,.087,2.044-.28,2.776-1.012,.731-.731,1.1-1.743,1.012-2.776-.054-.624,.19-1.213,.67-1.617,.792-.667,1.247-1.644,1.247-2.678s-.455-2.011-1.247-2.678c-.479-.403-.724-.993-.67-1.617,.088-1.033-.28-2.045-1.012-2.776s-1.748-1.094-2.775-1.012c-.626,.056-1.214-.191-1.617-.669-.668-.793-1.644-1.248-2.679-1.248s-2.011,.455-2.679,1.248c-.404,.479-.993,.719-1.616,.67-1.039-.09-2.044,.28-2.776,1.012-.731,.731-1.1,1.743-1.012,2.776,.054,.624-.19,1.213-.67,1.617-.792,.667-1.247,1.644-1.247,2.678s.455,2.011,1.247,2.678c.479,.403,.724,.993,.67,1.617-.088,1.033,.28,2.045,1.012,2.776,.732,.731,1.753,1.095,2.775,1.012,.057-.005,.113-.007,.169-.007Zm4.928-4.941l4.739-4.568c.397-.383,.409-1.017,.025-1.414-.383-.397-1.016-.409-1.414-.026l-4.752,4.581c-.391,.391-1.022,.391-1.44-.025l-2.278-2.117c-.402-.375-1.036-.353-1.413,.052-.376,.404-.353,1.037,.052,1.413l2.252,2.092c.586,.586,1.357,.879,2.126,.879,.765,0,1.526-.289,2.104-.866Z"/></svg>
+							</div>
+							<div class="block-features__content">
+								<div class="block-features__title">پیشنهادات داغ</div>
+								<div class="block-features__subtitle">تخفیف تا 90%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .block-features / end -->
+			<!-- .block-products -->
+			<div class="block block-products block-products--layout--large-first">
+				<div class="container">
+					<div class="block-header">
+						<h3 class="block-header__title">جدید ها</h3>
+						<div class="block-header__divider"></div>
+					</div>
+					<div class="block-products__body">
+                            {% for newproduct in newproducts %}
+							<div class="block-products__list-item">
+											<div class="product-card">
+
+												{% if newproduct.discount == "تخفیف ویژه!" %}
+												<div class="product-card__badges-list">
+													<div class="product-card__badge product-card__badge--sale">{{newproduct.discount}}</div>
+												</div>
+												{% endif %}
+												<div class="product-card__image">
+													<a href="{% url 'product-detail' newproduct.slug %}"><img src="{{newproduct.product_image.url}}" alt=""></a>
+												</div>
+												<div class="product-card__info">
+
+													<div class="product-card__name"><a href="{% url 'product-detail' newproduct.slug %}">{{newproduct.title}}</a></div>
+													<div class="product-card__rating">
+														<div class="rating">
+															<div class="rating__body">
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="store/images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="product-card__rating-legend">4 نقد و بررسی</div>
+													</div>
+
+												</div>
+												<div class="product-card__actions">
+
+													<div class="product-card__prices">{{newproduct.price}} تومان</div>
+													<div class="product-card__buttons">
+														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+ {% endfor %}
+									</div>
+								</div>
+							</div>
+	  <!-- .block-products / end -->
+			<!-- .block-banner -->
+		<div class="block block-banner">
+				<div class="container">
+					<a href="" class="block-banner__body">
+						<div class="block-banner__image block-banner__image--desktop" style="background-image: url('{{banner.banner_image.url}}')"></div>
+						<div class="block-banner__image block-banner__image--mobile" style="background-image: url('{{mobilebanner.banner_image.url}}')"></div>
+						<div class="block-banner__title">خرید
+							<br class="block-banner__mobile-br">راحت و بی دردسر</div>
+						<div class="block-banner__text">buyaccount.com</div>
+
+					</a>
+				</div>
+			</div>
+			<!-- .block-banner / end -->
+	  			<!-- .block-products -->
+			<div class="block block-products block-products--layout--large-first">
+				<div class="container">
+					<div class="block-header">
+						<h3 class="block-header__title">پرفروش ها</h3>
+						<div class="block-header__divider"></div>
+					</div>
+					<div class="block-products__body">
+                            {% for bestsell in bestsells %}
+							<div class="block-products__list-item">
+											<div class="product-card">
+
+												{% if bestsell.discount == "تخفیف ویژه!" %}
+												<div class="product-card__badges-list">
+													<div class="product-card__badge product-card__badge--sale">{{bestsell.discount}}</div>
+												</div>
+												{% endif %}
+												<div class="product-card__image">
+													<a href="{% url 'product-detail' bestsell.slug %}"><img src="{{bestsell.product_image.url}}" alt=""></a>
+												</div>
+												<div class="product-card__info">
+
+													<div class="product-card__name"><a href="{% url 'product-detail' bestsell.slug %}">{{bestsell.title}}</a></div>
+													<div class="product-card__rating">
+														<div class="rating">
+															<div class="rating__body">
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="store/images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="product-card__rating-legend">4 نقد و بررسی</div>
+													</div>
+
+												</div>
+												<div class="product-card__actions">
+
+													<div class="product-card__prices">{{bestsell.price}} تومان</div>
+													<div class="product-card__buttons">
+														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+ {% endfor %}
+									</div>
+								</div>
+							</div>
+	  <!-- .block-products / end -->
+						</div>
+					</div>
+
+
+		<!-- site__body / end -->
+
+
+{% endblock content %}
+{% block scripts %}
+<script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+      // Configure Owl Carousel options as per your requirements
+    });
+  });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,249 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+
+<div class="site">
+	<div class="site__body">
+		<div class="page-header">
+			<div class="page-header__container container">
+				<div class="page-header__title">
+					<h1>پرداخت</h1></div>
+			</div>
+		</div>
+		<div class="checkout block">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 mb-3">
+						<div class="alert alert-lg alert-primary">حساب کاربری دارید؟ <a href="">وارد حساب خود شوید</a></div>
+					</div>
+					<div class="col-12 col-lg-6 col-xl-7">
+						<div class="card mb-lg-0">
+							<div class="card-body">
+								<form id="shipping-form">
+									<h3 class="card-title">جزئیات پرداخت</h3>
+									<div id="user-info" class="form-row">
+										<div class="form-group col-md-6">
+											<label for="checkout-first-name">نام</label>
+											<input type="text" class="form-control" id="checkout-first-name" placeholder="نام">
+										</div>
+										<div class="form-group col-md-6">
+											<label for="checkout-last-name">نام خانوادگی</label>
+											<input type="text" class="form-control" id="checkout-last-name" placeholder="نام خانوادگی">
+										</div>
+									</div>
+
+
+									<div class="form-group">
+										<label for="checkout-street-address">آدرس خیابان</label>
+										<input type="text" class="form-control" id="checkout-street-address" placeholder="آدرس خیابان" name="address">
+									</div>
+
+									<div class="form-group">
+										<label for="checkout-city">شهر / شهرستان</label>
+										<input type="text" class="form-control" id="checkout-city" name="city">
+									</div>
+									<div class="form-group">
+										<label for="checkout-state">استان</label>
+										<input type="text" class="form-control" id="checkout-state" name="state">
+									</div>
+									<div class="form-group">
+										<label for="checkout-postcode">کد پستی</label>
+										<input type="text" class="form-control" id="checkout-postcode" name="zipcode">
+									</div>
+									<div  id="user-info" class="form-row">
+										<div class="form-group col-md-6">
+											<label for="checkout-email">آدرس ایمیل</label>
+											<input type="email" class="form-control" id="checkout-email" placeholder="آدرس ایمیل" name="emaliaddress">
+										</div>
+										<div class="form-group col-md-6">
+											<label for="checkout-phone">تلفن</label>
+											<input type="text" class="form-control" id="checkout-phone" placeholder="تلفن" name="phonenumber">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-create-account"> <span class="input-check__box"></span>
+											<svg class="input-check__icon" width="9px" height="7px">
+												<use xlink:href="images/sprite.svg#check-9x7"></use>
+											</svg>
+											</span>
+											</span>
+											<label class="form-check-label" for="checkout-create-account">ساخت حساب کاربری؟</label>
+										</div>
+									</div>
+                                    </form>
+								</div>
+								<div class="card-divider"></div>
+								<div class="card-body">
+									<h3 class="card-title">جزئیات حمل و نقل</h3>
+									<div class="form-group">
+										<div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-different-address"> <span class="input-check__box"></span>
+											<svg class="input-check__icon" width="9px" height="7px">
+												<use xlink:href="images/sprite.svg#check-9x7"></use>
+											</svg>
+											</span>
+											</span>
+											<label class="form-check-label" for="checkout-different-address">ارسال به آدرسی دیگر؟</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="checkout-comment">توضیحات سفارش <span class="text-muted">(اختیاری)</span></label>
+										<textarea id="checkout-comment" class="form-control" rows="4"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
+							<div class="card mb-0">
+								<div class="card-body">
+									<h3 class="card-title">سفارش شما</h3>
+									<table class="checkout__totals">
+										<thead class="checkout__totals-header">
+											<tr>
+												<th>محصول</th>
+												<th>جمع کل</th>
+											</tr>
+										</thead>
+										<tbody class="checkout__totals-products">
+											<tr>
+												<td>اره برقی برندیکس مدل 300 وات <span class="d-inline-block">× 2</span></td>
+												<td>1,398,000 تومان</td>
+											</tr>
+											<tr>
+												<td>اره چوب بری IRadix مدل 2700 وات <span class="d-inline-block">× 1</span></td>
+												<td>849,000 تومان</td>
+											</tr>
+											<tr>
+												<td>میخ کوب برقی برندیکس مدل 2019 <span class="d-inline-block">× 3</span></td>
+												<td>3,630,000 تومان</td>
+											</tr>
+										</tbody>
+										<tbody class="checkout__totals-subtotals">
+											<tr>
+												<th>جمع جزء</th>
+												<td>5,877,000 تومان</td>
+											</tr>
+											<tr>
+												<th>اعتبار فروشگاه</th>
+												<td>20,000- تومان</td>
+											</tr>
+											<tr>
+												<th>حمل و نقل</th>
+												<td>25,000 تومان</td>
+											</tr>
+										</tbody>
+										<tfoot class="checkout__totals-footer">
+											<tr>
+												<th>جمع کل</th>
+												<td>5,882,000 تومان</td>
+											</tr>
+										</tfoot>
+									</table>
+									<div class="payment-methods">
+										<ul class="payment-methods__list">
+
+
+
+											<li class="payment-methods__item">
+												<label class="payment-methods__item-header"><span class="payment-methods__item-radio input-radio"><span class="input-radio__body"><input class="input-radio__input" name="checkout_payment_method" type="radio"> <span class="input-radio__circle"></span> </span>
+													</span><span class="payment-methods__item-title">پرداخت آنلاین</span></label>
+												<div class="payment-methods__item-container">
+													<div class="payment-methods__item-description text-muted">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="checkout__agree form-group">
+										<div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-terms"> <span class="input-check__box"></span>
+											<svg class="input-check__icon" width="9px" height="7px">
+												<use xlink:href="images/sprite.svg#check-9x7"></use>
+											</svg>
+											</span>
+											</span>
+											<label class="form-check-label" for="checkout-terms">من <a target="_blank" href="terms-and-conditions.html">قوانین و مقررات</a> را خوانده و موافقم *</label>
+										</div>
+									</div>
+									<button type="submit" id="make-payment" class="btn btn-primary btn-xl btn-block">ثبت سفارش</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- site__body / end -->
+
+
+
+	</div>
+
+
+	<script type="text/javascript">
+	    var form = document.getElementById('shipping-form')
+		if (user != 'AnonymousUser'){
+		 	document.getElementById('user-info').innerHTML = ''
+		 }
+
+	    document.getElementById('make-payment').addEventListener('click', function(e){
+	    	submitFormData()
+	    })
+
+
+	    function submitFormData(){
+	    	console.log('Payment button clicked')
+
+	    	var userFormData = {
+				'name':null,
+				'email':null,
+				'total':total,
+			}
+
+			var shippingInfo = {
+				'address':null,
+				'city':null,
+				'state':null,
+				'zipcode':null,
+			}
+
+
+	    	shippingInfo.address = form.address.value
+		    shippingInfo.city = form.city.value
+		    shippingInfo.state = form.state.value
+		    shippingInfo.zipcode = form.zipcode.value
+
+
+	    	if (user == 'AnonymousUser'){
+	    		userFormData.name = form.name.value
+	    		userFormData.email = form.email.value
+	    	}
+
+	    	console.log('Shipping Info:', shippingInfo)
+	    	console.log('User Info:', userFormData)
+
+	    	var url = "/process_order/"
+	    	fetch(url, {
+	    		method:'POST',
+	    		headers:{
+	    			'Content-Type':'applicaiton/json',
+	    			'X-CSRFToken':csrftoken,
+	    		},
+	    		body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}),
+
+	    	})
+	    	.then((response) => response.json())
+	    	.then((data) => {
+				console.log('Success:', data);
+				alert('Transaction completed');
+
+				cart = {}
+				document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+				window.location.href = "{% url 'home' %}"
+
+				})
+	    }
+	</script>
+
+{% endblock content %}

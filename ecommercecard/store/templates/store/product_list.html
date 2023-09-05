@@ -1,0 +1,190 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="page-header">
+	<div class="page-header__container container">
+
+		<div class="page-header__title">
+
+			<h1></h1>
+
+		</div>
+	</div>
+</div>
+<div class="container">
+				<div class="shop-layout shop-layout--sidebar--start">
+
+					<div class="shop-layout__content">
+						<div class="block">
+							<div class="products-view">
+								<div class="products-view__options">
+
+
+								<div class="products-view__list products-list" data-layout="grid-3-sidebar" data-with-features="false">
+									<div class="products-list__body">
+										{% for product in products %}
+
+										<div class="products-list__item">
+
+											<div class="product-card">
+
+												{% if product.discount == "تخفیف ویژه!" %}
+												<div class="product-card__badges-list">
+													<div class="product-card__badge product-card__badge--sale">{{product.discount}}</div>
+												</div>
+												{% endif %}
+												<div class="product-card__image">
+													<a href="{% url 'product-detail' product.slug %}"><img src="{{product.product_image.url}}" alt=""></a>
+												</div>
+												<div class="product-card__info">
+
+													<div class="product-card__name"><a href="{% url 'product-detail' product.slug %}">{{product.title}}</a></div>
+													<div class="product-card__rating">
+														<div class="rating">
+															<div class="rating__body">
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="store/images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star rating__star--active" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge rating__star--active">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+																<svg class="rating__star" width="13px" height="12px">
+																	<g class="rating__fill">
+																		<use xlink:href="images/sprite.svg#star-normal"></use>
+																	</g>
+																	<g class="rating__stroke">
+																		<use xlink:href="images/sprite.svg#star-normal-stroke"></use>
+																	</g>
+																</svg>
+																<div class="rating__star rating__star--only-edge">
+																	<div class="rating__fill">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																	<div class="rating__stroke">
+																		<div class="fake-svg-icon"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="product-card__rating-legend">4 نقد و بررسی</div>
+													</div>
+
+												</div>
+												<div class="product-card__actions">
+
+													<div class="product-card__prices">{{product.price}} تومان</div>
+													<div class="product-card__buttons">
+														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										{% endfor %}
+									</div>
+								</div>
+
+
+
+								<div class="products-view__pagination">
+									<ul class="pagination justify-content-center">
+										{% if is_paginated %}
+										    {% if page_obj.has_previous %}
+										        <li class="page-item ">
+											        <a class="page-link page-link--with-arrow" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
+												        <svg class="page-link__arrow page-link__arrow--left" aria-hidden="true" width="8px" height="13px">
+													        <use xlink:href="images/sprite.svg#arrow-rounded-left-8x13"></use>
+												        </svg>
+											        </a>
+										        </li>
+										    {% endif %}
+
+
+                                            {% for num in page_obj.paginator.page_range %}
+										        {% if page_obj.number == num %}
+										            <li class="page-item active"><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
+										        {% elif num > page_obj.number|add:'-2' and  num < page_obj.number|add:'+2' %}
+										            <li class="page-item"><a class="page-link" href="?page={{num}}">{{ num }}</a></li>
+										        {% endif %}
+										    {% endfor %}
+
+
+                                            {% if page_obj.has_next %}
+										        <li class="page-item">
+											         <a class="page-link page-link--with-arrow" href="?page={{page_obj.next_page_number}}" aria-label="Next">
+												         <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">
+													         <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>
+												         </svg>
+											         </a>
+												</li>
+										    {% endif %}
+										{% endif %}
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+{% endblock content %}
