@@ -267,6 +267,7 @@ textarea.form-control.is-invalid,
 }
 .tags__list a {
 	padding-bottom: 3px;
+	border-radius:8px;
 }
 .share-links__item a {
 	padding-bottom: 2px;
