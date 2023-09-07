@@ -36,7 +36,7 @@
 								</td>
 								<td class="cart-table__column cart-table__column--product"><a href="{% url 'product-detail' item.product.slug %}" class="cart-table__product-name">{{item.product.title}}</a>
 								</td>
-								<td class="cart-table__column cart-table__column--price" data-title="قیمت">{{item.price}} </td>
+								<td class="cart-table__column cart-table__column--price" data-title="قیمت">{{item.price}} تومان</td>
 								<td class="cart-table__column cart-table__column--quantity" data-title="تعداد">
 									<div class="input-number">
 										<form  method="post" action="{% url 'cart:cart_add' item.product.id %}">
@@ -47,7 +47,7 @@
 										</form>
 									</div>
 								</td>
-								<td class="cart-table__column cart-table__column--total" data-title="جمع کل">{{item.total_price}}تومان </td>
+								<td class="cart-table__column cart-table__column--total" data-title="جمع کل">{{item.total_price}} تومان </td>
 								<td class="cart-table__column cart-table__column--remove">
 									<a href = "{% url 'cart:cart_remove' item.product.id %}" >
 										<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
