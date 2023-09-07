@@ -107,23 +107,18 @@
 											</tr>
 										</thead>
 										<tbody class="checkout__totals-products">
+										{% for item in cart %}
 											<tr>
-												<td>اره برقی برندیکس مدل 300 وات <span class="d-inline-block">× 2</span></td>
-												<td>1,398,000 تومان</td>
+												<td>{{item.product.title}} <span class="d-inline-block">× {{item.product_count}}</span></td>
+												<td>{{item.total_price}} تومان</td>
 											</tr>
-											<tr>
-												<td>اره چوب بری IRadix مدل 2700 وات <span class="d-inline-block">× 1</span></td>
-												<td>849,000 تومان</td>
-											</tr>
-											<tr>
-												<td>میخ کوب برقی برندیکس مدل 2019 <span class="d-inline-block">× 3</span></td>
-												<td>3,630,000 تومان</td>
-											</tr>
+
+                                        {% endfor %}
 										</tbody>
 										<tbody class="checkout__totals-subtotals">
 											<tr>
 												<th>جمع جزء</th>
-												<td>5,877,000 تومان</td>
+												<td>{{cart.get_total_price}} تومان</td>
 											</tr>
 											<tr>
 												<th>اعتبار فروشگاه</th>

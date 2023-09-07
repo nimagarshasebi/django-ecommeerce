@@ -833,7 +833,7 @@ screen and (-ms-high-contrast:active) {
 }
 .card {
 	border: 2px solid #f0f0f0;
-	border-radius: 2px
+	border-radius: 8px
 }
 .card-body {
 	padding: 2rem

@@ -4,13 +4,6 @@ from .forms import CartAddProductForm
 from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse
-
-
-
-
-
-
-
 @require_POST
 def cart_add(requset, product_id):
     cart = Cart(requset)

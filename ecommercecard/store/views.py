@@ -1,10 +1,13 @@
 import datetime
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Product,Category,Slider,Banner,BannerMobile
 from django.db.models import Q
 from django.http import JsonResponse
 import json
 from cart.forms import CartAddProductForm
+from cart.cart import Cart
 
 from django.views.generic import (
     ListView,
@@ -57,5 +60,7 @@ def index(request):
     mobilebanner = Banner.objects.all()
     context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
     return  render(request,'store/index.html',context)
-
-
+@login_required()
+def checkout(request):
+    cart=Cart(request)
+    return render(request,'store/checkout.html',{'cart':cart})
