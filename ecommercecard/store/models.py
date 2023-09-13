@@ -41,7 +41,7 @@ class BannerMobile(models.Model):
 class Order(models.Model):
     customer=models.ForeignKey('users.User',on_delete=models.CASCADE)
     order_date=models.DateTimeField(auto_now_add=True)
-    shipping_address=models.ForeignKey('ShippingAddress',on_delete=models.CASCADE)
+    shipping_address=models.ForeignKey('ShippingAddress',on_delete=models.CASCADE,default=False)
 
 
     def __str__(self):
