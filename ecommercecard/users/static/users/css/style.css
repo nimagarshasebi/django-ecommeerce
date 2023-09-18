@@ -5345,10 +5345,10 @@ screen and (-ms-high-contrast:active) {
 		font-weight: 500
 	}
 	.cart-table__head .cart-table__column:first-child {
-		border-top-right-radius: 2.5px
+		border-top-right-radius: 8px
 	}
 	.cart-table__head .cart-table__column:last-child {
-		border-top-left-radius: 2.5px
+		border-top-left-radius: 8px
 	}
 	.cart-table__body .cart-table__column {
 		padding-top: 18px;
@@ -5358,10 +5358,10 @@ screen and (-ms-high-contrast:active) {
 		border-bottom: 1px solid #ebebeb
 	}
 	.cart-table__body .cart-table__row:last-child .cart-table__column:first-child {
-		border-bottom-right-radius: 2.5px
+		border-bottom-right-radius: 8px
 	}
 	.cart-table__body .cart-table__row:last-child .cart-table__column:last-child {
-		border-bottom-left-radius: 2.5px
+		border-bottom-left-radius: 8px
 	}
 	.cart-table__column--image {
 		width: 1px;

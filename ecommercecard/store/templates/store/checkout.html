@@ -83,6 +83,10 @@
 											<label class="form-check-label" for="checkout-create-account">ساخت حساب کاربری؟</label>
 										</div>
 									</div>-->
+
+
+                            <input class="primary-btn order-submit" type="submit" value="ثبت آدرس">
+
                                     </form>
 								</div>
 								<div class="card-divider"></div>
@@ -156,7 +160,8 @@
 													<span class="input-radio__body">
 														<input class="input-radio__input" name="checkout_payment_method" type="radio">
 														<span class="input-radio__circle"></span> </span>
-													</span><!--<span class="payment-methods__item-title">پرداخت آنلاین</span>--> <form action="." method="post">
+													</span><!--<span class="payment-methods__item-title">پرداخت آنلاین</span>-->
+													<form action="." method="post">
                             {% csrf_token %}
                             <input class="primary-btn order-submit" type="submit" value="Place Order">
                         </form></label>

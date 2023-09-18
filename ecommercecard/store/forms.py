@@ -1,10 +1,10 @@
 from urllib import request
 
-from .models import ShippingAddress
+from .models import Address
 from django import forms
 
-class ShippingAddressForm(forms.ModelForm):
 
+class AddressForm(forms.ModelForm):
     firstname_customer = forms.CharField(required=True,label='نام سفارش دهنده')
     lastname_customer = forms.CharField(required=True, label='نام خانوادگی سفارش دهنده')
     street_address = forms.CharField(required=True, label='آدرس خیابان ')
@@ -13,5 +13,5 @@ class ShippingAddressForm(forms.ModelForm):
     state = forms.CharField(required=True, label='استان')
     postal_code = forms.CharField(required=True, label='کدپستی')
     class Meta:
-        model=ShippingAddress
+        model=Address
         fields=['firstname_customer','lastname_customer','state','county','city','street_address','postal_code']
