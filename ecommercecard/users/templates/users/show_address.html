@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+
+
+<div class="site__body">
+<div class="page-header">
+				<div class="page-header__container container">
+
+
+				</div>
+			</div>
+			<div class="block">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-12 col-lg-9 mt-4 mt-lg-0">
+							<div class="addresses-list">
+                                {% for address in addresses %}
+								<a href="{% url 'add-address' %}" class="addresses-list__item addresses-list__item--new">
+									<div class="addresses-list__plus"></div>
+									<div class="btn btn-secondary btn-sm">افزودن جدید</div>
+								</a>
+								<div class="addresses-list__divider"></div>
+								<div class="addresses-list__item card address-card">
+                                    {% if address.default_address %}
+									    <div class="address-card__badge">پیش فرض</div>
+                                    {% endif %}
+									<div class="address-card__body">
+										<div class="address-card__name">{{address.firstname_customer}} {{address.lastname_customer}}</div>
+										<div class="address-card__row"><strong>استان:</strong> {{address.state}}
+											<br><strong>شهرستان:</strong> {{address.county}}
+                                            <br><strong>شهر:</strong> {{address.city}}
+											<br><strong>خیابان:</strong> {{address.street_address}}
+                                            <br><strong>کدپستی:</strong> {{address.postal_code}}</div>
+
+										<div class="address-card__footer"><a href="" class="btn btn-primary">ویرایش</a> <a href="" class="btn btn-danger">حذف</a></div>
+									</div>
+								</div>
+
+								<div class="addresses-list__divider"></div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock content %}

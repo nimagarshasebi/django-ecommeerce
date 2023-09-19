@@ -2,7 +2,7 @@
 from .models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-
+from .models import Address
 
 class UpdateProfile(forms.ModelForm):
     phone_number=forms.CharField(required=False,label='شماره همراه')
@@ -30,3 +30,15 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(label='رمزعبور',widget=forms.PasswordInput())
 
 
+class AddressForm(forms.ModelForm):
+    firstname_customer = forms.CharField(required=True,label='نام سفارش دهنده')
+    lastname_customer = forms.CharField(required=True, label='نام خانوادگی سفارش دهنده')
+    street_address = forms.CharField(required=True, label='آدرس خیابان ')
+    city = forms.CharField(required=True, label='شهر ')
+    county = forms.CharField(required=True, label='شهرستان ')
+    state = forms.CharField(required=True, label='استان')
+    postal_code = forms.CharField(required=True, label='کدپستی')
+    default_address=forms.BooleanField(required=False,initial=False)
+    class Meta:
+        model=Address
+        fields=['firstname_customer','lastname_customer','state','county','city','street_address','postal_code','default_address']

@@ -5032,8 +5032,8 @@ screen and (-ms-high-contrast:active) {
 	padding: 4px 8px 2px;
 	top: -2px;
 	left: .75rem;
-	border-bottom-right-radius: 2px;
-	border-bottom-left-radius: 2px
+
+	border-radius: 8px
 }
 .address-card__body {
 	padding: 1.5rem;
@@ -9755,3 +9755,6 @@ border-radius:8px;
 }
 .st0{font-family:'Calibri';}
 .st1{font-size:24.7841px;}
+.make-address{
+margin:0 auto;
+}

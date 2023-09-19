@@ -1,0 +1,114 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- site__body -->
+		<div class="site__body">
+			<div class="page-header">
+				<div class="page-header__container container">
+
+
+				</div>
+			</div>
+			<div class="block">
+				<div class="container">
+					<div class="row">
+				<div class="col-12 col-lg-8 col-xl-10 make-address">
+
+						<div class="card mb-lg-0">
+							<div class="card-body">
+
+								<form id="shipping-form" method="post">
+
+									{% csrf_token %}
+									{{shipping|crispy}}
+									<!--<h3 class="card-title">جزئیات پرداخت</h3>
+									<div id="user-info" class="form-row">
+										<div class="form-group col-md-6">
+											<label for="checkout-first-name">نام</label>
+											{{shipping.firstname_customer}}
+										</div>
+										<div class="form-group col-md-6">
+											<label for="checkout-last-name">نام خانوادگی</label>
+
+											<input type="text" class="form-control" id="checkout-last-name" placeholder="نام خانوادگی">
+											{{shipping.lastname_customer}}
+										</div>
+									</div>
+<div class="form-group">
+										<label for="checkout-state">استان</label>
+										{{shipping.state}}
+									</div>
+									<div class="form-group">
+										<label for="checkout-city"> شهرستان</label>
+										{{shipping.county}}
+									</div>
+<div class="form-group">
+										<label for="checkout-city">شهر </label>
+										{{shipping.city}}
+									</div>
+									<div class="form-group">
+										<label for="checkout-street-address">آدرس خیابان</label>
+										{{shipping.street_address}}
+
+									</div>
+
+
+
+
+									<div class="form-group">
+										<label for="checkout-postcode">کد پستی</label>
+										{{shipping.postal_code}}
+									</div>
+									<div  id="user-info" class="form-row">
+										<div class="form-group col-md-6">
+											<label for="checkout-email">آدرس ایمیل</label>
+											<input type="email" class="form-control" id="checkout-email" placeholder="آدرس ایمیل" name="emaliaddress">
+										</div>
+										<div class="form-group col-md-6">
+											<label for="checkout-phone">تلفن</label>
+											<input type="text" class="form-control" id="checkout-phone" placeholder="تلفن" name="phonenumber">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-create-account"> <span class="input-check__box"></span>
+											<svg class="input-check__icon" width="9px" height="7px">
+												<use xlink:href="images/sprite.svg#check-9x7"></use>
+											</svg>
+											</span>
+											</span>
+											<label class="form-check-label" for="checkout-create-account">ساخت حساب کاربری؟</label>
+										</div>
+									</div>-->
+
+
+                            <input class=" address-submit btn btn-primary" type="submit" value="ثبت آدرس">
+
+                                    </form>
+								</div>
+
+								<!--<div class="card-body">
+									<h3 class="card-title">جزئیات حمل و نقل</h3>
+									<div class="form-group">
+										<div class="form-check"><span class="form-check-input input-check"><span class="input-check__body"><input class="input-check__input" type="checkbox" id="checkout-different-address"> <span class="input-check__box"></span>
+											<svg class="input-check__icon" width="9px" height="7px">
+												<use xlink:href="images/sprite.svg#check-9x7"></use>
+											</svg>
+											</span>
+											</span>
+											<label class="form-check-label" for="checkout-different-address">ارسال به آدرسی دیگر؟</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="checkout-comment">توضیحات سفارش <span class="text-muted">(اختیاری)</span></label>
+										<textarea id="checkout-comment" class="form-control" rows="4"></textarea>
+									</div>
+								</div>-->
+							</div>
+						</div>
+
+				</div>
+			</div>
+		</div>
+        </div>
+		<!-- site__body / end -->
+{% endblock content %}

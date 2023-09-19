@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from users.models import User
+from users.models import Address
 from django.db.models.signals import post_save
 class Category(models.Model):
     name=models.CharField(blank=False,max_length=150)
@@ -32,23 +32,11 @@ class Banner(models.Model):
 class BannerMobile(models.Model):
     banner_image = models.ImageField(upload_to='uploads/mobilebanners/')
 
-class Address(models.Model):
-        customer = models.ForeignKey('users.User', on_delete=models.CASCADE,null=True)
-        firstname_customer = models.CharField(max_length=100)
-        lastname_customer = models.CharField(max_length=100)
-        street_address = models.CharField(max_length=100)
-        city = models.CharField(max_length=100)
-        county = models.CharField(max_length=100)
-        state = models.CharField(max_length=100)
-        postal_code = models.CharField(max_length=10)
-
-        def __str__(self):
-            return f'{self.customer,self.state,self.county,self.city,self.street_address,self.postal_code}'
-
 
 class Order(models.Model):
     customer=models.ForeignKey('users.User',on_delete=models.CASCADE)
     order_date=models.DateTimeField(auto_now_add=True)
+    order_address = models.ForeignKey('users.Address', on_delete=models.CASCADE,null=True)
     
     def __str__(self):
         return f'{self.id}'

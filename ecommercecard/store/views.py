@@ -3,13 +3,13 @@ import datetime
 from _decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Address
+from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem
 from django.db.models import Q
 from django.http import JsonResponse
 import json
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
-from .forms import AddressForm
+
 from users.models import User
 
 from django.views.generic import (
@@ -69,12 +69,6 @@ def index(request):
 def checkout(request):
     cart = Cart(request)
     if request.method == 'POST':
-        Addressform = AddressForm(request.POST)
-        if Addressform.is_valid():
-            address = Addressform.save(commit=False)
-            address.customer = request.user
-            address.save()
-
             order = Order.objects.create(customer=request.user)
             for item in cart:
                 OrderItem.objects.create(order=order,
@@ -84,14 +78,7 @@ def checkout(request):
                                          product_cost=Decimal(item['product_count']) * Decimal(item['price']))
 
             cart.clear()
-    else:
-        initial_data = {'firstname_customer': request.user.first_name,
-                        'lastname_customer': request.user.last_name,
-                        'state': '',
-                        'county': '',
-                        'city': '',
-                        'street_address': '',
-                        'postal_code': ''}
-        Addressform = AddressForm(initial=initial_data)
 
-    return render(request, 'store/checkout.html', {'cart': cart, 'shipping': Addressform})
+
+    return render(request, 'store/checkout.html', {'cart': cart})
+
