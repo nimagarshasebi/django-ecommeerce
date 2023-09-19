@@ -19,13 +19,24 @@
 					<div class="col-12 mb-3">
 						<div class="alert alert-lg alert-primary">حساب کاربری دارید؟ <a href="">وارد حساب خود شوید</a></div>
 					</div>
+
+
 					<div class="col-12 col-lg-6 col-xl-7">
 						<div class="card mb-lg-0">
-							<div class="card-body">
+							<div class="card-body">{% for address in addresses %}
+								<strong>آدرس :</strong>
+					   <br>{{address.state}}،{{address.county}}،{{address.city}}،{{address.street_address}}
+								<br><strong>کدپستی :</strong>
+								<br>{{address.postal_code}}
+					{% endfor %}
+							</div>
+						</div>
+					</div>
+<!--
 								<form id="shipping-form" method="post">
 									{% csrf_token %}
 									{{shipping|crispy}}
-									<!--<h3 class="card-title">جزئیات پرداخت</h3>
+									<h3 class="card-title">جزئیات پرداخت</h3>
 									<div id="user-info" class="form-row">
 										<div class="form-group col-md-6">
 											<label for="checkout-first-name">نام</label>
@@ -82,7 +93,7 @@
 											</span>
 											<label class="form-check-label" for="checkout-create-account">ساخت حساب کاربری؟</label>
 										</div>
-									</div>-->
+									</div>
 
 
                             <input class="primary-btn order-submit" type="submit" value="ثبت آدرس">
@@ -108,7 +119,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>-->
 						<div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
 							<div class="card mb-0">
 								<div class="card-body">

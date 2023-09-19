@@ -38,7 +38,12 @@ class AddressForm(forms.ModelForm):
     county = forms.CharField(required=True, label='شهرستان ')
     state = forms.CharField(required=True, label='استان')
     postal_code = forms.CharField(required=True, label='کدپستی')
-    default_address=forms.BooleanField(required=False,initial=False)
+
     class Meta:
         model=Address
-        fields=['firstname_customer','lastname_customer','state','county','city','street_address','postal_code','default_address']
+        fields=['firstname_customer','lastname_customer','state','county','city','street_address','postal_code']
+class DefaultAddressForm(forms.ModelForm):
+    default_address = forms.BooleanField(required=False, initial=False)
+    class Meta:
+        model=Address
+        fields=['default_address']

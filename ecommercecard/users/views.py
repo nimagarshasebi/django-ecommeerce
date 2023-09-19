@@ -57,7 +57,7 @@ def make_user_address(request):
                         'street_address': '',
                         'postal_code': ''}
         Addressform = AddressForm(initial=initial_data)
-    return render(request, 'users/address.html', {'shipping': Addressform})
+    return render(request, 'users/address.html', {'Addressform': Addressform})
 
 @login_required
 def showaddress(request):
