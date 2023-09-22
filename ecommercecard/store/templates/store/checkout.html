@@ -16,21 +16,19 @@
 		<div class="checkout block">
 			<div class="container">
 				<div class="row">
-					<div class="col-12 mb-3">
-						<div class="alert alert-lg alert-primary">حساب کاربری دارید؟ <a href="">وارد حساب خود شوید</a></div>
-					</div>
-
-
-					<div class="col-12 col-lg-6 col-xl-7">
-						<div class="card mb-lg-0">
-							<div class="card-body">{% for address in addresses %}
+					<div class="col-12 col-lg-6 col-xl-7 ">
+						{% for address in addresses %}
+						<div class="card mb-1  ">
+							<div class="card-body">
 								<strong>آدرس :</strong>
-					   <br>{{address.state}}،{{address.county}}،{{address.city}}،{{address.street_address}}
+								<br>{{address.state}}،{{address.county}}،{{address.city}}،{{address.street_address}}
 								<br><strong>کدپستی :</strong>
 								<br>{{address.postal_code}}
-					{% endfor %}
+
 							</div>
+
 						</div>
+						{% endfor %}
 					</div>
 <!--
 								<form id="shipping-form" method="post">

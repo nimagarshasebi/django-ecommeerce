@@ -284,17 +284,16 @@
 												<!-- .menu -->
 												<ul class="menu menu--layout--classic">
 													{% if user.is_authenticated %}
-
-													<li><a href="account-dashboard.html">داشبورد</a></li>
-													<li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
-													<li><a href="account-orders.html">سابقه خرید</a></li>
-													<li><a href="{% url 'address' %}">دفتر آدرس</a></li>
-													<li><a href="{% url 'add-address' %}">افزودن آدرس</a></li>
-													<li><a href="account-password.html">تغییر رمز عبور</a></li>
-													<li><a href="{% url 'logout' %}">خروج</a></li>
+													    <li><a href="account-dashboard.html">داشبورد</a></li>
+													    <li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
+													    <li><a href="account-orders.html">سابقه خرید</a></li>
+													    <li><a href="{% url 'address' %}">دفتر آدرس</a></li>
+													    <li><a href="{% url 'add-address' %}">افزودن آدرس</a></li>
+													    <li><a href="account-password.html">تغییر رمز عبور</a></li>
+													    <li><a href="{% url 'logout' %}">خروج</a></li>
 													{% else %}
-													<li><a href="{% url 'register' %}">ثبت نام</a></li>
-													<li><a href="{% url 'login' %}">ورود</a></li>
+													    <li><a href="{% url 'register' %}">ثبت نام</a></li>
+													    <li><a href="{% url 'login' %}">ورود</a></li>
 													{% endif %}
 												</ul>
 												<!-- .menu / end -->

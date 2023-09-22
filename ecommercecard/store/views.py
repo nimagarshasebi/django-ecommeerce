@@ -3,13 +3,14 @@ import datetime
 from _decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem
+from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Comment
 from django.db.models import Q
 from django.http import JsonResponse
 import json
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
+from .forms import CommentForm
 from users.models import User
 
 from django.views.generic import (
@@ -39,21 +40,28 @@ class ProductListView(ListView):
 
 
 def productdetail(request,slug):
+    product = get_object_or_404(Product, slug=slug)
+    cart_add_product_form = CartAddProductForm()
+    comments=Comment.objects.filter(product=product)
 
-    product=get_object_or_404(Product,slug=slug)
-    cart_add_product_form=CartAddProductForm()
-    context = {'product': product,'cart_add_product_form':cart_add_product_form}
+
+    if request.method=='POST':
+        commentform=CommentForm(request.POST)
+        if commentform.is_valid():
+
+            new_comment=commentform.save(commit=False)
+            new_comment.product=product
+            new_comment.save()
+
+    else:
+        if request.user.is_authenticated:
+            initial_data={'name':request.user.first_name,'email':request.user.email}
+            commentform = CommentForm(initial=initial_data)
+        else:
+            commentform = CommentForm()
+
+    context = {'product': product,'cart_add_product_form':cart_add_product_form,'commentform':commentform,'comments':comments}
     return render(request,'store/product_detail.html',context)
-
-
-# class ProductDetailView(DetailView):
-#     model = Product
-#     context_object_name = 'product'
-#     template_name = 'store/product_detail.html'
-#
-
-
-
 
 def index(request):
     newproducts=Product.objects.filter(newproduct=True)
@@ -62,7 +70,7 @@ def index(request):
     banner = Banner.objects.all()
     mobilebanner = Banner.objects.all()
     context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
-    return  render(request,'store/index.html',context)
+    return render(request,'store/index.html',context)
 
 
 @login_required

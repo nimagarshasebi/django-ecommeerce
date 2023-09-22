@@ -42,7 +42,9 @@ class AddressForm(forms.ModelForm):
     class Meta:
         model=Address
         fields=['firstname_customer','lastname_customer','state','county','city','street_address','postal_code']
-class DefaultAddressForm(forms.ModelForm):
+
+
+class DefaultAddressButton(forms.ModelForm):
     default_address = forms.BooleanField(required=False, initial=False)
     class Meta:
         model=Address

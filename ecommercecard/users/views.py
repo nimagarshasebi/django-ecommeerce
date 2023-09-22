@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .forms import UpdateProfile, RegisterCustomer, LoginForm,AddressForm
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
@@ -20,8 +20,6 @@ def customerprofile(request):
         context = {'updateform': updateform}
         return render(request, 'users/customer_profile.html', context)
 
-
-# Create your views here.
 def registercustomer(request):
     if request.method == 'POST':
         register_form = RegisterCustomer(request.POST)
@@ -39,7 +37,7 @@ class CustomerLogin(LoginView):
     form_class = LoginForm
 
 
-# Create your views here.
+
 @login_required
 def make_user_address(request):
     if request.method == 'POST':
@@ -48,6 +46,8 @@ def make_user_address(request):
             address = Addressform.save(commit=False)
             address.customer = request.user
             address.save()
+            return redirect('address')
+
     else:
         initial_data = {'firstname_customer': request.user.first_name,
                         'lastname_customer': request.user.last_name,
@@ -63,3 +63,21 @@ def make_user_address(request):
 def showaddress(request):
     addresses=Address.objects.filter(customer=request.user)
     return render(request, 'users/show_address.html', {'addresses': addresses})
+
+
+
+
+
+# def set_default_address(request):
+#
+#     address = get_object_or_404(Address, customer=request.user, pk=4)
+#     if request.method == 'POST':
+#         form = DefaultAddressButton(request.POST, instance=address)
+#         if form.is_valid():
+#             form.default_address=True
+#             form.save()
+#             return redirect('address')
+#     else:
+#         form = DefaultAddressButton(instance=address)
+#
+#     return render(request,'users/bb.html', {'form': form})

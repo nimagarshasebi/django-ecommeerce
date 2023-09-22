@@ -16,13 +16,19 @@ class Product(models.Model):
     product_image=models.ImageField(upload_to='uploads/products/')
     price=models.CharField(blank=True,max_length=20)
     discount=models.CharField(blank=True,max_length=20)
-    comment=models.TextField(blank=True,max_length=750)
     newproduct=models.BooleanField(default=False)
     bestsell=models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.title}'
-
+class Comment(models.Model):
+    text=models.TextField(blank=False,max_length=750)
+    name=models.CharField(blank=False,max_length=50)
+    email=models.CharField(blank=False,max_length=50)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comments',related_query_name='comment',null=True)
+    comment_date=models.DateField(auto_now=True)
+    def __str__(self):
+        return f'{self.text}'
 class Slider(models.Model):
     slideshow_image = models.ImageField(upload_to='uploads/slideshow/')
 
