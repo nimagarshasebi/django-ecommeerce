@@ -32,12 +32,12 @@
 								<div class="address-card__footer">
 									<a href="" class="btn btn-primary btnedit">ویرایش</a>
 									<a href="" class="btn btn-danger btnremove">حذف</a>
-								<form method="post" action="{% url 'address'  %}">
-									{% csrf_token %}
-									{{ form.as_p }}
-									<input type="hidden" name="address_id" value="{{ address.id }}">
-									<button type="submit">Set as Default</button>
-								</form>
+								 <form method="POST" action="{% url 'set_default_address' %}">
+									 {% csrf_token %}
+									 {{form}}
+									 <input type="hidden" name="address_id" value="{{address.id}}">
+									 <button class="btn" type="submit"> پیش فرض</button>
+								 </form>
 								</div>
 							</div>
 						</div>

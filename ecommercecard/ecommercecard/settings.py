@@ -72,6 +72,7 @@ TEMPLATES = [
                 'store.context_processors.categories_processor',
                 'store.context_processors.addresses_processor',
                 'cart.context_processors.cart_processor',
+
             ],
         },
     },

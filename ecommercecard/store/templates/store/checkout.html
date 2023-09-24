@@ -17,18 +17,21 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12 col-lg-6 col-xl-7 ">
-						{% for address in addresses %}
+
 						<div class="card mb-1  ">
+
 							<div class="card-body">
+<p class="checkout_address">آدرس تحویل شما</p>
 								<strong>آدرس :</strong>
 								<br>{{address.state}}،{{address.county}}،{{address.city}}،{{address.street_address}}
 								<br><strong>کدپستی :</strong>
 								<br>{{address.postal_code}}
+								<br><a class="add_address_link" href="{% url 'add-address' %}">آدرس جدید</a>
 
 							</div>
 
 						</div>
-						{% endfor %}
+
 					</div>
 <!--
 								<form id="shipping-form" method="post">

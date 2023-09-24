@@ -11,7 +11,7 @@ from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
 from .forms import CommentForm
-from users.models import User
+from users.models import User,Address
 
 from django.views.generic import (
     ListView,
@@ -77,7 +77,9 @@ def index(request):
 def checkout(request):
     cart = Cart(request)
     if request.method == 'POST':
-            order = Order.objects.create(customer=request.user)
+            customer = request.user
+            receiver_address=Address.objects.get(customer=customer,default_address=True)
+            order = Order.objects.create(customer=customer,order_address=receiver_address)
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],

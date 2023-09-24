@@ -61,23 +61,21 @@ def make_user_address(request):
 
 @login_required
 def showaddress(request):
+
     addresses=Address.objects.filter(customer=request.user)
     return render(request, 'users/show_address.html', {'addresses': addresses})
 
 
+def set_default_address(request):
+    if request.method == 'POST':
+        form = DefaultAddressButton(request.POST)
+        if form.is_valid():
+            address_id = request.POST.get('address_id')
+            default_address = form.cleaned_data['default_address']
+            # Update the default address for the current user
+            Address.objects.filter(customer=request.user).update(default_address=False)
+            # Update the selected address as default
+            Address.objects.filter(id=address_id).update(default_address=True)
+            return redirect('address')
+    return redirect('home')  # Redirect to home page if the request is not POST or the form is not valid
 
-
-
-# def set_default_address(request):
-#
-#     address = get_object_or_404(Address, customer=request.user, pk=4)
-#     if request.method == 'POST':
-#         form = DefaultAddressButton(request.POST, instance=address)
-#         if form.is_valid():
-#             form.default_address=True
-#             form.save()
-#             return redirect('address')
-#     else:
-#         form = DefaultAddressButton(instance=address)
-#
-#     return render(request,'users/bb.html', {'form': form})

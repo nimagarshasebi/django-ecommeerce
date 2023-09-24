@@ -7,5 +7,5 @@ def categories_processor(request):
     categories = Category.objects.all()
     return {'categories': categories}
 def addresses_processor(request):
-    addresses = Address.objects.filter(customer=request.user)
-    return {'addresses': addresses}
+    address = Address.objects.get(customer=request.user,default_address=True)
+    return {'address': address}

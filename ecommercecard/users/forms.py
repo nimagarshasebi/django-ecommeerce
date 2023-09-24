@@ -45,7 +45,8 @@ class AddressForm(forms.ModelForm):
 
 
 class DefaultAddressButton(forms.ModelForm):
+    address_id = forms.IntegerField(widget=forms.HiddenInput())
     default_address = forms.BooleanField(required=False, initial=False)
     class Meta:
         model=Address
-        fields=['default_address']
+        fields=['default_address','address_id']
