@@ -13,6 +13,7 @@
 
 					<div class="page-header__title">
 						<h1>سبد خرید</h1></div>
+
 				</div>
 			</div>
 			<div class="cart block">
@@ -30,6 +31,7 @@
 						</thead>
 						<tbody class="cart-table__body">
 						{% for item in cart %}
+
 							<tr class="cart-table__row">
 								<td class="cart-table__column cart-table__column--image">
 									<a href="{% url 'product-detail' item.product.slug %}"><img src="{{item.product.product_image.url}}" alt=""></a>
@@ -43,8 +45,9 @@
 											{{item.update_product_count_form.product_count}}
 											{{item.update_product_count_form.update}}
 											{% csrf_token %}
-											<input type="submit" value="ثبت تعداد">
+
 										</form>
+
 									</div>
 								</td>
 								<td class="cart-table__column cart-table__column--total" data-title="جمع کل">{{item.total_price}} تومان </td>
@@ -111,4 +114,12 @@
 
 
 	</div>
+<script>
+    var productForms = document.querySelectorAll("[id^='id_product_count']");
+    productForms.forEach(function(form) {
+        form.addEventListener("change", function() {
+            this.form.submit();
+        });
+    });
+</script>
 {% endblock content %}

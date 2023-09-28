@@ -9777,3 +9777,11 @@ color:#19bfd3;
 .add_address_link:hover{
 color:#19bfd3;
 }
+.product-count{
+border-radius:8px;
+border:1px solid #e0e0e2;
+text-align:center;
+color:red;
+height:40px;
+width:110px;
+}
