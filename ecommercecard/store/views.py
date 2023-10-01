@@ -64,12 +64,19 @@ def productdetail(request,slug):
     return render(request,'store/product_detail.html',context)
 
 def index(request):
-    newproducts=Product.objects.filter(newproduct=True)
-    bestsells=Product.objects.filter(bestsell=True)
+
     slideshowimg=Slider.objects.all()
     banner = Banner.objects.all()
     mobilebanner = Banner.objects.all()
-    context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
+    query = request.GET.get('search')
+    if query:
+        newproducts = Product.objects.filter(title=query)
+        context = {'newproducts': newproducts, 'slideshowimg': slideshowimg, 'banner': banner,
+                   'mobilebanner': mobilebanner}
+    else:
+        newproducts = Product.objects.filter(newproduct=True)
+        bestsells = Product.objects.filter(bestsell=True)
+        context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
     return render(request,'store/index.html',context)
 
 

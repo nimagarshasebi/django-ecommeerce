@@ -1,6 +1,6 @@
 
 
-from .models import Category,Comment
+from .models import Category
 from .models import Order
 from users.models import Address
 from users.forms import AddressForm

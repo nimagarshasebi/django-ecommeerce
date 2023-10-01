@@ -79,3 +79,4 @@ def set_default_address(request):
             return redirect('address')
     return redirect('home')  # Redirect to home page if the request is not POST or the form is not valid
 
+
