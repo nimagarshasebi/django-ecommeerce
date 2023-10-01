@@ -21,6 +21,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def comment_counter(self):
+        return Comment.objects.filter(product=self).count()
 class Comment(models.Model):
     text=models.TextField(blank=False,max_length=750)
     name=models.CharField(blank=False,max_length=50)
@@ -29,6 +32,7 @@ class Comment(models.Model):
     comment_date=models.DateField(auto_now=True)
     def __str__(self):
         return f'{self.text}'
+
 class Slider(models.Model):
     slideshow_image = models.ImageField(upload_to='uploads/slideshow/')
 

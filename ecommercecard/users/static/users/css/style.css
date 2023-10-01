@@ -2000,7 +2000,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 .product-card__image img {
 	max-width: 100%;
 	display: block;
-	position: absolute
+	position: absolute;
+	height:100%;
+	width:80%;
+	margin:0 10% 0 10%;
 }
 .product-card__quickview {
 	z-index: 2;
@@ -9771,7 +9774,7 @@ color:#999;
 }
 .add_address_link{
 width:10%;
-margin:10px 85% 0 5%;
+margin:10px 80% 0 5%;
 color:#19bfd3;
 }
 .add_address_link:hover{
@@ -9784,4 +9787,21 @@ text-align:center;
 color:red;
 height:40px;
 width:110px;
+}
+@media (max-width:991px) {
+.add_address_link{
+width:10%;
+margin:10px 70% 0 20%;
+color:#19bfd3;
+}
+}
+@media (max-width:767px) {
+.add_address_link{
+width:10%;
+margin:10px 60% 0 30%;
+}
+@media (max-width:575px) {
+	.add_address_link{
+width:10%;
+margin:10px 60% 0 30%;
 }

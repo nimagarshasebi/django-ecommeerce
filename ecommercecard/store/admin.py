@@ -9,12 +9,13 @@ admin.site.register(Category)
 admin.site.register(Slider)
 admin.site.register(Banner)
 admin.site.register(BannerMobile)
-
 admin.site.register(Order,OrderAdmin)
 admin.site.register(OrderItem)
 admin.site.register(Invoice)
 admin.site.register(Transaction)
-admin.site.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    readonly_fields = ('name','text','email','product','comment_date')
+admin.site.register(Comment,CommentAdmin)
 
 
 
