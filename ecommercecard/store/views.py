@@ -45,6 +45,7 @@ def productdetail(request,slug):
     comments=Comment.objects.filter(product=product)
 
 
+
     if request.method=='POST':
         commentform=CommentForm(request.POST)
         if commentform.is_valid():
@@ -64,19 +65,12 @@ def productdetail(request,slug):
     return render(request,'store/product_detail.html',context)
 
 def index(request):
-
     slideshowimg=Slider.objects.all()
     banner = Banner.objects.all()
     mobilebanner = Banner.objects.all()
-    query = request.GET.get('search')
-    if query:
-        newproducts = Product.objects.filter(title=query)
-        context = {'newproducts': newproducts, 'slideshowimg': slideshowimg, 'banner': banner,
-                   'mobilebanner': mobilebanner}
-    else:
-        newproducts = Product.objects.filter(newproduct=True)
-        bestsells = Product.objects.filter(bestsell=True)
-        context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
+    newproducts = Product.objects.filter(newproduct=True)
+    bestsells = Product.objects.filter(bestsell=True)
+    context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
     return render(request,'store/index.html',context)
 
 
@@ -99,3 +93,8 @@ def checkout(request):
 
     return render(request, 'store/checkout.html', {'cart': cart})
 
+def search(request):
+    query = request.GET.get('search')
+    if query:
+        searchproduct= Product.objects.filter(title=query)
+    return render(request,'store/search_result.html',{'searchproduct':searchproduct})

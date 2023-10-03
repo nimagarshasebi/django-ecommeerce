@@ -174,7 +174,7 @@
 </g>
 </svg>					</a>
 							<div class="mobile-header__search">
-								<form class="mobile-header__search-form" action="" method="GET">
+								<form class="mobile-header__search-form" action="{% url 'search' %}" method="GET">
 									<input class="mobile-header__search-input" name="search" placeholder="جستجو  میان  محصولات" aria-label="Site search" type="text" autocomplete="off" value="{{request.GET.search}}">
 									<button class="mobile-header__search-button mobile-header__search-button--submit" type="submit">
 									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">
@@ -244,7 +244,7 @@
 					</div>
 					<div class="site-header__search">
 						<div class="search">
-							<form class="search__form" action="">
+							<form class="search__form" action="{% url 'search' %}" method="GET">
 								<input class="search__input" name="search" placeholder="جستجو میان محصولات" aria-label="Site search" type="text" autocomplete="off">
 								<button class="search__button" type="submit">
 									<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="20px" height="20px">

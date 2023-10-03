@@ -51,7 +51,3 @@ class DefaultAddressButton(forms.ModelForm):
         model=Address
         fields=['default_address','address_id']
 
-class SearchForm(forms.Form):
-    title=forms.CharField()
-    class Meta:
-        fields=['title']
