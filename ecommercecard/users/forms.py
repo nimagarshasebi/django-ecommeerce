@@ -22,12 +22,19 @@ class RegisterCustomer(UserCreationForm):
     password1=forms.CharField(required=False,widget=forms.PasswordInput,label='رمزعبور')
     password2 = forms.CharField(required=False, widget=forms.PasswordInput, label='تکراررمزعبور')
 
+    error_messages = {
+        "password_mismatch":"رمز وارد شده مشابه نیست.",
+    }
+
     class Meta:
         model=User
         fields=['username','email','password1','password2']
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label='نام کاربری',widget=forms.TextInput())
     password = forms.CharField(label='رمزعبور',widget=forms.PasswordInput())
+    error_messages = {
+        'invalid_login': "نام کاربری یا رمز عبور وارد شده نادرست است ",
+        'inactive': "کاربر فعال نمی باشد"}
 
 
 class AddressForm(forms.ModelForm):

@@ -77,6 +77,8 @@ def index(request):
 @login_required
 def checkout(request):
     cart = Cart(request)
+    address = Address.objects.get(customer=request.user, default_address=True)
+
     if request.method == 'POST':
             customer = request.user
             receiver_address=Address.objects.get(customer=customer,default_address=True)
@@ -91,7 +93,7 @@ def checkout(request):
             cart.clear()
 
 
-    return render(request, 'store/checkout.html', {'cart': cart})
+    return render(request, 'store/checkout.html', {'cart': cart,'address':address})
 
 def search(request):
     query = request.GET.get('search')

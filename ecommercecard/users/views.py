@@ -38,6 +38,8 @@ class CustomerLogin(LoginView):
 
 
 
+
+
 @login_required
 def make_user_address(request):
     if request.method == 'POST':
