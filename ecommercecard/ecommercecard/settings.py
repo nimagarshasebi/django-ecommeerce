@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
     'crispy_forms',
+    'django_jalali',
     'crispy_bootstrap4',
     'phonenumber_field',
 ]

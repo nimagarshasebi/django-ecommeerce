@@ -1,0 +1,83 @@
+{% extends "users/base.html" %}
+{% load jformat %}
+{% block content %}
+<div class="site">
+		<!-- site__body -->
+		<div class="site__body">
+
+			<div class="block">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-12 col-lg-12 mt-4 mt-lg-4">
+							<div class="dashboard">
+								<div class="dashboard__profile card profile-card">
+									<div class="card-body profile-card__body">
+										<div class="profile-card__avatar"><img src="images/avatars/avatar-3.jpg" alt=""></div>
+										<div class="profile-card__name">{{user.username}}</div>
+										<div class="profile-card__email">{{user.email}}</div>
+										<div class="profile-card__edit"><a href="account-profile.html" class="btn btn-secondary btn-sm">ویرایش پروفایل</a></div>
+									</div>
+								</div>
+								<div class="dashboard__address card address-card address-card--featured">
+									<div class="address-card__badge">آدرس پیشفرض</div>
+									<div class="address-card__body">
+										<div class="address-card__name">{{user.username}}</div>
+										<div class="address-card__row">{{default_address.state}}
+											<br>{{default_address.county}}
+											<br>{{default_address.city}}
+										    <br>{{default_address.street_address}}
+										</div>
+										<div class="address-card__row">
+											<div class="address-card__row-title">شماره تلفن</div>
+											<div class="address-card__row-content"><span class="ltr_text">{{user.phone_number}}</span></div>
+										</div>
+										<div class="address-card__row">
+											<div class="address-card__row-title">آدرس ایمیل</div>
+											<div class="address-card__row-content">{{user.email}}</div>
+										</div>
+										<div class="address-card__footer"><a href="">ویرایش آدرس</a></div>
+									</div>
+								</div>
+								<div class="dashboard__orders card">
+
+									<div class="card-header">
+										<h5>سفارشات اخیر</h5></div>
+									<div class="card-divider"></div>
+									<div class="card-table">
+										<div class="table-responsive-sm">
+											<table>
+												<thead>
+													<tr>
+														<th>سفارش</th>
+														<th>تاریخ</th>
+														<th>وضعیت</th>
+														<th>جمع کل</th>
+													</tr>
+												</thead>
+												<tbody>
+
+{% for transaction in transactions %}
+													<tr>
+														<td><a href="">{{transaction.id}}</a></td>
+														<td>{{transaction.transactiondate|jformat:"14%y/%m/%d"}}</td>
+														<td>{{transaction.status}}</td>
+														<td>{{transaction.amount}}</td>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- site__body / end -->
+
+	</div>
+{% endblock content %}

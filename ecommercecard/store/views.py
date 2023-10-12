@@ -3,7 +3,7 @@ import datetime
 from _decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Comment
+from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Comment,Transaction
 from django.db.models import Q
 from django.http import JsonResponse
 import json
@@ -90,6 +90,9 @@ def checkout(request):
                                          product_count=item['product_count'],
                                          product_cost=Decimal(item['product_count']) * Decimal(item['price']))
 
+
+            transaction=Transaction.objects.create(order=order,amount=order.get_total_price(),customer=customer)
+
             cart.clear()
 
 
@@ -100,3 +103,13 @@ def search(request):
     if query:
         searchproduct= Product.objects.filter(title=query)
     return render(request,'store/search_result.html',{'searchproduct':searchproduct})
+
+
+@login_required
+def dashboard(request):
+        user=request.user
+        default_address = Address.objects.get(customer=request.user,default_address=True)
+        transactions=Transaction.objects.filter(customer=user)
+        context={'default_address':default_address,'transactions':transactions,'user':user}
+
+        return render(request, 'store/account_dashboard.html', context)
