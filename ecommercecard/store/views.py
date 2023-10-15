@@ -9,6 +9,7 @@ from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,
 from django.db.models import Q
 from django.http import JsonResponse
 import json
+from store.forms import CartAddProductFormStore
 from cart.forms import CartAddProductForm
 from cart.cart import Cart
 
@@ -65,7 +66,7 @@ def productdetail(request,slug):
 
 def index(request):
 
-    cart_add_form = CartAddProductForm()
+    cart_add_form = CartAddProductFormStore()
     slideshowimg=Slider.objects.all()
     banner=Banner.objects.all()
     newproducts = Product.objects.filter(newproduct=True)
@@ -77,7 +78,7 @@ def index(request):
 def cart_add_index(requset, product_id):
     cart = Cart(requset)
     product = get_object_or_404(Product, id=product_id)
-    form = CartAddProductForm(requset.POST)
+    form = CartAddProductFormStore(requset.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,

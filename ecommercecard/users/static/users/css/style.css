@@ -9788,6 +9788,14 @@ color:red;
 height:40px;
 width:110px;
 }
+.product-count-index{
+border-radius:8px;
+border:1px solid #e0e0e2;
+text-align:center;
+color:red;
+height:calc(1.875rem + 2px)
+width:110px;
+}
 @media (max-width:991px) {
 .add_address_link{
 width:10%;
