@@ -3,6 +3,8 @@ import datetime
 from _decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect,get_object_or_404
+from django.views.decorators.http import require_POST
+
 from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Comment,Transaction
 from django.db.models import Q
 from django.http import JsonResponse
@@ -43,9 +45,6 @@ def productdetail(request,slug):
     product = get_object_or_404(Product, slug=slug)
     cart_add_product_form = CartAddProductForm()
     comments=Comment.objects.filter(product=product)
-
-
-
     if request.method=='POST':
         commentform=CommentForm(request.POST)
         if commentform.is_valid():
@@ -65,14 +64,26 @@ def productdetail(request,slug):
     return render(request,'store/product_detail.html',context)
 
 def index(request):
+
+    cart_add_form = CartAddProductForm()
     slideshowimg=Slider.objects.all()
-    banner = Banner.objects.all()
-    mobilebanner = Banner.objects.all()
+    banner=Banner.objects.all()
     newproducts = Product.objects.filter(newproduct=True)
     bestsells = Product.objects.filter(bestsell=True)
-    context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'mobilebanner':mobilebanner}
+    context={'newproducts':newproducts,'bestsells':bestsells,'slideshowimg':slideshowimg,'banner':banner,'cart_add_form':cart_add_form}
     return render(request,'store/index.html',context)
 
+@require_POST
+def cart_add_index(requset, product_id):
+    cart = Cart(requset)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductForm(requset.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product,
+                 product_count=cd['product_count'],
+                 update_count=cd['update'])
+    return redirect('home')
 
 @login_required
 def checkout(request):
@@ -106,10 +117,15 @@ def search(request):
 
 
 @login_required
-def dashboard(request):
+def account_order(request):
         user=request.user
         default_address = Address.objects.get(customer=request.user,default_address=True)
         transactions=Transaction.objects.filter(customer=user)
         context={'default_address':default_address,'transactions':transactions,'user':user}
 
-        return render(request, 'store/account_dashboard.html', context)
+        return render(request, 'store/account_order.html', context)
+
+@login_required
+def orderitem(request,order_id):
+    orderitems=Order.get_orderitem(order_id)
+    return render(request,'store/orderitems.html',{'orderitems':orderitems})

@@ -191,8 +191,12 @@
 
 													<div class="product-card__prices">{{newproduct.price}} تومان</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
+														<form  class="product__option"  method="post" action="{% url 'cart-add-index' newproduct.pk %}">
 
+															<input class="btn btn-primary product-card__addtocart" type="submit" value="افزودن به سبد ">
+															{{cart_add_form}}
+															{% csrf_token %}
+														</form>
 													</div>
 												</div>
 											</div>
@@ -332,8 +336,12 @@
 
 													<div class="product-card__prices">{{bestsell.price}} تومان</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
+														<form  class="product__option"  method="post" action="{% url 'cart-add-index' bestsell.pk %}">
 
+															<input class="btn btn-primary product-card__addtocart" type="submit" value="افزودن به سبد ">
+															{{cart_add_form}}
+															{% csrf_token %}
+														</form>
 													</div>
 												</div>
 											</div>

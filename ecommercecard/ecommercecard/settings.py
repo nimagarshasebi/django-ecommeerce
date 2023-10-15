@@ -71,7 +71,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'store.context_processors.categories_processor',
-
                 'cart.context_processors.cart_processor',
 
             ],
@@ -151,3 +150,4 @@ LOGIN_REDIRECT_URL='home'
 LOGIN_URL='login'
 AUTH_USER_MODEL='users.User'
 CART_SESSION_ID='cart'
+WISHLIST_SESSION_ID='cart'

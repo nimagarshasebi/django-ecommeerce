@@ -25,6 +25,9 @@ class Product(models.Model):
 
     def comment_counter(self):
         return Comment.objects.filter(product=self).count()
+
+
+
 class Comment(models.Model):
     text=models.TextField(blank=False,max_length=750)
     name=models.CharField(blank=False,max_length=50)
@@ -56,6 +59,10 @@ class Order(models.Model):
         for item in items:
             total_price=total_price+item.product_cost
         return total_price
+
+    def get_orderitem(self):
+        orderitems=OrderItem.objects.filter(order=self)
+        return orderitems
 
 
     def __str__(self):

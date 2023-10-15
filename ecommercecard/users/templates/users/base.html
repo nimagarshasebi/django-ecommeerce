@@ -98,7 +98,7 @@
 							<ul class="mobile-links mobile-links--level--1">
                           {% if user.is_authenticated %}
 								<li class="mobile-links__item" data-collapse-item>
-									<div class="mobile-links__item-title"><a href="{% url 'dashboard' %}" class="mobile-links__item-link">داشبورد</a></div>
+									<div class="mobile-links__item-title"><a href="{% url 'account-order' %}"  class="mobile-links__item-link">سابقه خرید</a></div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item>
 									<div class="mobile-links__item-title"><a href="{% url 'profile' %}" class="mobile-links__item-link">ویرایش پروفایل</a></div>
@@ -287,7 +287,7 @@
 												<!-- .menu -->
 												<ul class="menu menu--layout--classic">
 													{% if user.is_authenticated %}
-													    <li><a href="{% url 'dashboard' %}">داشبورد</a></li>
+													    <li><a href="{% url 'account-order' %}">سابقه خرید</a></li>
 													    <li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
 													    <li><a href="account-orders.html">سابقه خرید</a></li>
 													    <li><a href="{% url 'address' %}">دفتر آدرس</a></li>
@@ -388,7 +388,9 @@
 					</div>
 				</div>
 			</div>
+			</div>
 		</header>
+
 		<!-- desktop site__header / end -->
         {% block content %}
         {% endblock %}

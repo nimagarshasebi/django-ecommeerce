@@ -1,0 +1,58 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="site">
+		<!-- site__body -->
+		<div class="site__body">
+
+			<div class="block">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-12 col-lg-12 mt-4 mt-lg-4">
+							<div class="dashboard">
+
+	<div class="dashboard__orders card">
+
+									<div class="card-header">
+										<h5>اقلام سفارش</h5></div>
+									<div class="card-divider"></div>
+									<div class="card-table">
+										<div class="table-responsive-sm">
+											<table>
+												<thead>
+													<tr>
+														<th>محصول</th>
+														<th>قیمت هر محصول</th>
+														<th>تعداد محصول</th>
+														<th>قیمت کل محصول</th>
+													</tr>
+												</thead>
+												<tbody>
+
+{% for item in orderitems %}
+													<tr>
+														<td> {{item.product}}</td>
+														<td>{{ item.product_price }}</td>
+														<td>{{ item.product_count }}</td>
+														<td>{{ item.product_cost }}</td>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- site__body / end -->
+
+	</div>
+
+{% endblock %}
