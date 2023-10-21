@@ -69,7 +69,7 @@
 			<div class="mobilemenu__content">
 				<ul class="mobile-links mobile-links--level--0" data-collapse data-collapse-opened-class="mobile-links__item--open">
 					<li class="mobile-links__item" data-collapse-item>
-						<div class="mobile-links__item-title"><a href="shop-grid-3-columns-sidebar.html" class="mobile-links__item-link">دسته بندی محصولات</a>
+						<div class="mobile-links__item-title"><a href="#" class="mobile-links__item-link">دسته بندی محصولات</a>
 							<button class="mobile-links__item-toggle" type="button" data-collapse-trigger>
 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="23px" height="23px">
 	<path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg>
@@ -97,9 +97,7 @@
 
 							<ul class="mobile-links mobile-links--level--1">
                           {% if user.is_authenticated %}
-								<li class="mobile-links__item" data-collapse-item>
-									<div class="mobile-links__item-title"><a href="{% url 'account-order' %}"  class="mobile-links__item-link">سابقه خرید</a></div>
-								</li>
+
 								<li class="mobile-links__item" data-collapse-item>
 									<div class="mobile-links__item-title"><a href="{% url 'profile' %}" class="mobile-links__item-link">ویرایش پروفایل</a></div>
 								</li>
@@ -270,7 +268,7 @@
 								<!-- .nav-links -->
 								<div class="nav-panel__nav-links nav-links">
 									<ul class="nav-links__list">
-										<li class="nav-links__item nav-links__item--with-submenu"><a href="shop-grid-3-columns-sidebar.html"><span>دسته بندی محصولات <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="18px"><path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg></span></a>
+										<li class="nav-links__item nav-links__item--with-submenu"><a href="#"><span>دسته بندی محصولات <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="27px" height="18px"><path d="M18.71,8.21a1,1,0,0,0-1.42,0l-4.58,4.58a1,1,0,0,1-1.42,0L6.71,8.21a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.59,4.59a3,3,0,0,0,4.24,0l4.59-4.59A1,1,0,0,0,18.71,8.21Z"/></svg></span></a>
 											<div class="nav-links__menu">
 												<!-- .menu -->
 												<ul class="menu menu--layout--classic">
@@ -287,7 +285,7 @@
 												<!-- .menu -->
 												<ul class="menu menu--layout--classic">
 													{% if user.is_authenticated %}
-													    <li><a href="{% url 'account-order' %}">سابقه خرید</a></li>
+
 													    <li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
 													    <li><a href="account-orders.html">سابقه خرید</a></li>
 													    <li><a href="{% url 'address' %}">دفتر آدرس</a></li>
