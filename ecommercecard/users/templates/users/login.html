@@ -10,15 +10,17 @@
 </div>
 
 
-<div class="col-md-6 d-flex mt-4 mt-md-0 loginblock">
+<div class="col-md-3 d-flex mt-4 mt-md-0 loginblock">
 							<div class="card flex-grow-1 mb-0">
 								<div class="card-body">
 									<h3 class="card-title">ورود</h3>
 									<form method="POST">
                                         {% csrf_token %}
 										{{form|crispy}}
-										<button type="submit" class="btn btn-primary mt-4">ورود</button>
+									<button type="submit" class="btn btn-primary mt-4 loginbtn">ورود</button>
+										<a class="link-offset-2 link-underline link-underline-opacity-0 forget-pass-link" href="{% url 'reset-password' %}">رمز خود را فراموش کرده اید؟</a>
 									</form>
+
 								</div>
 							</div>
 </div>

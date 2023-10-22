@@ -193,7 +193,7 @@
 													<div class="product-card__buttons">
 														<form  class="product__option"  method="post" action="{% url 'cart-add-index' newproduct.pk %}">
 
-															<input class="btn btn-primary product-card__addtocart" style="width:40%;"  type="submit" value="افزودن به سبد ">
+															<input class="btn btn-primary product-card__addtocart"   type="submit" value="افزودن به سبد ">
 															{{cart_add_form}}
 															{% csrf_token %}
 														</form>
@@ -359,12 +359,3 @@
 
 
 {% endblock content %}
-{% block scripts %}
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-      // Configure Owl Carousel options as per your requirements
-    });
-  });
-</script>
-{% endblock scripts %}

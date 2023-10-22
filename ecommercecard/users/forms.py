@@ -1,7 +1,7 @@
 
 from .models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordResetForm
 from .models import Address
 
 class UpdateProfile(forms.ModelForm):
@@ -36,7 +36,8 @@ class LoginForm(AuthenticationForm):
         'invalid_login': "نام کاربری یا رمز عبور وارد شده نادرست است ",
         'inactive': "کاربر فعال نمی باشد"}
 
-
+class PasswordresetForm(PasswordResetForm):
+    email=forms.CharField(label='ایمیل',widget=forms.TextInput())
 class AddressForm(forms.ModelForm):
     firstname_customer = forms.CharField(required=True,label='نام سفارش دهنده')
     lastname_customer = forms.CharField(required=True, label='نام خانوادگی سفارش دهنده')

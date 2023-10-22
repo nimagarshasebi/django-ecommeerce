@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'store.context_processors.categories_processor',
                 'cart.context_processors.cart_processor',
+                'django.template.context_processors.request',
 
             ],
         },
@@ -151,3 +152,13 @@ LOGIN_URL='login'
 AUTH_USER_MODEL='users.User'
 CART_SESSION_ID='cart'
 WISHLIST_SESSION_ID='cart'
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]

@@ -861,6 +861,10 @@ screen and (-ms-high-contrast:active) {
 }
 .card-title {
 	margin-bottom: 1.75rem
+	width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align:center;
 }
 .card-title h1,
 .card-title h2,
@@ -9733,6 +9737,8 @@ width:98%;
 margin:0 auto;}
 .product-gallery__featured img{
 width:100%;}
+
+
 .product__actions-item--addtocart{
 width:42%;}
 .product__actions-item--addtocart button{
@@ -9766,6 +9772,7 @@ margin-top:5px;
 margin-top:5px;
 }
 .checkout_address{
+
 font-size:14px;
 color:#999;
 }
@@ -9777,13 +9784,16 @@ color:#19bfd3;
 .add_address_link:hover{
 color:#19bfd3;
 }
-.product-count-index{
+.counter{
 border-radius:8px;
 border:1px solid #e0e0e2;
 text-align:center;
 color:red;
-width:40% !important;
-height:calc(1.85rem+2px) !important;
+height:calc(1.875rem + 2px);
+width:40%;
+}
+.product-card__addtocart{
+width:40%;
 }
 @media (max-width:991px) {
 .add_address_link{
@@ -9802,3 +9812,22 @@ margin:10px 60% 0 30%;
 width:10%;
 margin:10px 60% 0 30%;
 }}
+.forget-pass-link{
+width: 50%;
+  margin: 20px 25% 0 25%;
+  display: block;}
+
+.loginbtn{
+width:50%;
+margin:0 25%;
+}
+
+.send-resetpass-btn{
+
+width:50%;
+margin:0 25%;
+}
+.registerbtn{
+width:50%;
+margin:0 25%;
+}

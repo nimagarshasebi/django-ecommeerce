@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton
+from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,PasswordResetView
 from .models import Address
 
 
@@ -37,7 +37,8 @@ class CustomerLogin(LoginView):
     form_class = LoginForm
 
 
-
+class CustomerPasswordReset(PasswordResetView):
+    form_class = PasswordresetForm
 
 
 @login_required
@@ -74,11 +75,9 @@ def set_default_address(request):
         if form.is_valid():
             address_id = request.POST.get('address_id')
             default_address = form.cleaned_data['default_address']
-            # Update the default address for the current user
             Address.objects.filter(customer=request.user).update(default_address=False)
-            # Update the selected address as default
             Address.objects.filter(id=address_id).update(default_address=True)
             return redirect('address')
-    return redirect('home')  # Redirect to home page if the request is not POST or the form is not valid
+    return redirect('home')
 
 
