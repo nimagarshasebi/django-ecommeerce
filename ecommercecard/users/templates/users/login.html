@@ -18,7 +18,7 @@
                                         {% csrf_token %}
 										{{form|crispy}}
 									<button type="submit" class="btn btn-primary mt-4 loginbtn">ورود</button>
-										<a class="link-offset-2 link-underline link-underline-opacity-0 forget-pass-link" href="{% url 'reset-password' %}">رمز خود را فراموش کرده اید؟</a>
+										<a class="link-offset-2 link-underline link-underline-opacity-0 forget-pass-link" href="{% url 'password_reset' %}">رمز خود را فراموش کرده اید؟</a>
 									</form>
 
 								</div>

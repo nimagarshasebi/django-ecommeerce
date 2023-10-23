@@ -670,6 +670,11 @@ textarea.form-control.is-invalid,
 
 
 }}
+.loginblock {
+        margin-top:0 !important;
+        margin-right:37.5% !important;
+        margin-left:37.5% !important;
+}
 
 .asteriskField{
     display: none !important;

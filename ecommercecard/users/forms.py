@@ -59,3 +59,6 @@ class DefaultAddressButton(forms.ModelForm):
         model=Address
         fields=['default_address','address_id']
 
+class SetPasswordForm(forms.Form):
+    new_password1 = forms.CharField(widget=forms.PasswordInput(),label='رمز عبور جدید')
+    new_password2 = forms.CharField(widget=forms.PasswordInput(),label='تایید رمز عبور')

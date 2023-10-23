@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm
+from django.urls import reverse_lazy
+from django.views.generic import FormView
+
+from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm,SetPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.views import LoginView,PasswordResetView
+from django.contrib.auth.views import LoginView, PasswordResetView, PasswordContextMixin
 from .models import Address
 
 
@@ -81,3 +84,7 @@ def set_default_address(request):
     return redirect('home')
 
 
+class PasswordResetConfirmView(PasswordContextMixin,FormView):
+    form_class = SetPasswordForm
+    title ='Enter new password'
+    success_url = reverse_lazy('password_reset_complete')

@@ -9831,3 +9831,10 @@ margin:0 25%;
 width:50%;
 margin:0 25%;
 }
+.product-count{
+border-radius: 8px;
+  border: 1px solid #ebebeb;
+  color: red;
+  text-align: center;
+  height:calc(2.75rem + 2px);
+}

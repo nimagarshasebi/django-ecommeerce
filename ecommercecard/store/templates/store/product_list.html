@@ -124,7 +124,7 @@
 																</div>
 															</div>
 														</div>
-														<div class="product-card__rating-legend">4 نقد و بررسی</div>
+														<div class="product-card__rating-legend">{{product.comment_counter}} نقد و بررسی</div>
 													</div>
 
 												</div>
@@ -132,8 +132,11 @@
 
 													<div class="product-card__prices">{{product.price}} تومان</div>
 													<div class="product-card__buttons">
-														<button class="btn btn-primary product-card__addtocart" type="button">افزودن به سبد</button>
-
+														<form  class="product__option"  method="post" action="{% url 'cart-add-index' product.pk %}">
+															<input class="btn btn-primary product-card__addtocart" type="submit" value="افزودن به سبد">
+															{{cart_add}}
+															{% csrf_token %}
+														</form>
 													</div>
 												</div>
 											</div>
