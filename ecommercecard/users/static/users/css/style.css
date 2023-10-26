@@ -2104,7 +2104,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-origin {
 	line-height: 1;
 	color: #b3b3b3;
 	padding-top: 1px;
-	margin-right: 9px
+	width: 40%;
+    text-align: center;
+	margin-right: 30%;
+
 }
 .product-card__prices {
 	margin-top: 14px;
