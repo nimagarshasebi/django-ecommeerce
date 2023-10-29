@@ -102,7 +102,7 @@
 									<div class="mobile-links__item-title"><a href="{% url 'profile' %}" class="mobile-links__item-link">ویرایش پروفایل</a></div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item>
-									<div class="mobile-links__item-title"><a href="account-orders.html" class="mobile-links__item-link">سابقه خرید</a></div>
+									<div class="mobile-links__item-title"><a href="{% url 'account-order'  %}" class="mobile-links__item-link">سابقه خرید</a></div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item>
 									<div class="mobile-links__item-title"><a href="{% url 'address' %}" class="mobile-links__item-link">دفتر آدرس</a></div>
@@ -287,7 +287,7 @@
 													{% if user.is_authenticated %}
 
 													    <li><a href="{% url 'profile' %}">ویرایش پروفایل</a></li>
-													    <li><a href="account-orders.html">سابقه خرید</a></li>
+													    <li><a href="{% url 'account-order'  %}">سابقه خرید</a></li>
 													    <li><a href="{% url 'address' %}">دفتر آدرس</a></li>
 													    <li><a href="{% url 'add-address' %}">افزودن آدرس</a></li>
 													    <li><a href="account-password.html">تغییر رمز عبور</a></li>
