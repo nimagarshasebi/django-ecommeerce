@@ -1,7 +1,8 @@
+from django.core.exceptions import ValidationError
 
 from .models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordResetForm
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm,PasswordResetForm,PasswordChangeForm
 from .models import Address
 
 class UpdateProfile(forms.ModelForm):
@@ -60,5 +61,33 @@ class DefaultAddressButton(forms.ModelForm):
         fields=['default_address','address_id']
 
 class SetPasswordForm(forms.Form):
+
     new_password1 = forms.CharField(widget=forms.PasswordInput(),label='رمز عبور جدید')
     new_password2 = forms.CharField(widget=forms.PasswordInput(),label='تایید رمز عبور')
+
+class PasswordchangeForm(PasswordChangeForm):
+    error_messages = {'password_incorrect':
+            "رمز عبور قبلی خود را که وارد کرده اید اشتباه است،لطفا دوباره تکرار کنید."}
+    old_password = forms.CharField(
+        label=('رمزعبور کنونی'),
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"autocomplete": "current-password", "autofocus": True}
+        ),
+    )
+    new_password1 = forms.CharField(
+        label=('رمزعبور جدید'),
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"autocomplete": "current-password", "autofocus": True}
+        ),
+    )
+    new_password2 = forms.CharField(
+        label=('تکرار رمزعبور'),
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={"autocomplete": "current-password", "autofocus": True}
+        ),
+    )
+
+    field_order = ["old_password", "new_password1", "new_password2"]

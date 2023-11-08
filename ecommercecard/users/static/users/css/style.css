@@ -9841,3 +9841,23 @@ border-radius: 8px;
   text-align: center;
   height:calc(2.75rem + 2px);
 }
+.resetdone{
+width:50%;
+margin-left:25%;
+margin-right:25%;
+text-align:canter;}
+.changedone{
+width:50%;
+margin-left:25%;
+margin-right:25%;
+text-align:canter;}
+.passchangeblock{
+margin-top: 0 !important;
+margin-right: 37.5% !important;
+margin-left: 37.5% !important;
+}
+.passresetblock{
+margin-top: 0 !important;
+margin-right: 37.5% !important;
+margin-left: 37.5% !important;
+}

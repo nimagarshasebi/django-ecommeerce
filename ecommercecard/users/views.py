@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-
-from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm,SetPasswordForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm,SetPasswordForm,PasswordchangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.views import LoginView, PasswordResetView, PasswordContextMixin
+from django.contrib.auth.views import LoginView, PasswordResetView, PasswordContextMixin,PasswordChangeView
 from .models import Address
 
 
-@login_required()
+@login_required
 def customerprofile(request):
     if request.method == 'POST':
         updateform = UpdateProfile(request.POST, instance=request.user)
@@ -40,8 +40,12 @@ class CustomerLogin(LoginView):
     form_class = LoginForm
 
 
-class CustomerPasswordReset(PasswordResetView):
+class CustomerPasswordReset(LoginRequiredMixin,PasswordResetView):
     form_class = PasswordresetForm
+
+
+class CustomerChangePassword(LoginRequiredMixin,PasswordChangeView):
+    form_class = PasswordchangeForm
 
 
 @login_required
