@@ -86,6 +86,19 @@ def cart_add_index(requset, product_id):
                  update_count=cd['update'])
     return redirect('home')
 
+
+@require_POST
+def cart_add_category(requset, product_id):
+    cart = Cart(requset)
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductFormStore(requset.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product,
+                 product_count=cd['product_count'],
+                 update_count=cd['update'])
+    return redirect('cart:cart_detail')
+
 @login_required
 def checkout(request):
     cart = Cart(request)
@@ -104,7 +117,6 @@ def checkout(request):
 
 
             transaction=Transaction.objects.create(order=order,amount=order.get_total_price(),customer=customer)
-
             cart.clear()
 
 

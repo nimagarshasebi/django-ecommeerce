@@ -49,7 +49,7 @@
 
 													<div class="product-card__prices">{{product.price}} تومان</div>
 													<div class="product-card__buttons">
-														<form  class="product__option"  method="post" action="{% url 'cart-add-index' product.pk %}">
+														<form  class="product__option"  method="post" action="{% url 'cart-add-category' product.pk %}">
 															<input class="btn btn-primary product-card__addtocart" type="submit" value="افزودن به سبد">
 															{{cart_add}}
 															{% csrf_token %}
