@@ -60,6 +60,14 @@ class DefaultAddressButton(forms.ModelForm):
         model=Address
         fields=['default_address','address_id']
 
+class DeleteAddress(forms.ModelForm):
+    address_id = forms.IntegerField(widget=forms.HiddenInput())
+
+    class Meta:
+        model=Address
+        fields=['address_id']
+
+
 class SetPasswordForm(forms.Form):
 
     new_password1 = forms.CharField(widget=forms.PasswordInput(),label='رمز عبور جدید')

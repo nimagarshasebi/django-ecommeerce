@@ -111,7 +111,7 @@
 									<div class="mobile-links__item-title"><a href="{% url 'add-address' %}" class="mobile-links__item-link">افزودن آدرس</a></div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item>
-									<div class="mobile-links__item-title"><a href="#}" class="mobile-links__item-link">تغییر رمز عبور</a></div>
+									<div class="mobile-links__item-title"><a href="{% url 'password_change' %}" class="mobile-links__item-link">تغییر رمز عبور</a></div>
 								</li>
 								<li class="mobile-links__item" data-collapse-item>
 									<div class="mobile-links__item-title"><a href="{% url 'logout' %}" class="mobile-links__item-link">خروج</a></div>
@@ -290,7 +290,7 @@
 													    <li><a href="{% url 'account-order'  %}">سابقه خرید</a></li>
 													    <li><a href="{% url 'address' %}">دفتر آدرس</a></li>
 													    <li><a href="{% url 'add-address' %}">افزودن آدرس</a></li>
-													    <li><a href="#">تغییر رمز عبور</a></li>
+													    <li><a href="{% url 'password_change' %}">تغییر رمز عبور</a></li>
 													    <li><a href="{% url 'logout' %}">خروج</a></li>
 													{% else %}
 													    <li><a href="{% url 'register' %}">ثبت نام</a></li>

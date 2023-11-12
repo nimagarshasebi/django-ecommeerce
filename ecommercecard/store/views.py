@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST
 
 from .models import Product,Category,Slider,Banner,BannerMobile,Order,OrderItem,Comment,Transaction
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 import json
 from store.forms import CartAddProductFormStore
 from cart.forms import CartAddProductForm
@@ -102,11 +102,16 @@ def cart_add_category(requset, product_id):
 @login_required
 def checkout(request):
     cart = Cart(request)
-    address = Address.objects.get(customer=request.user, default_address=True)
+    customer = request.user
+    try:
+        receiver_address=Address.objects.get(customer=customer,default_address=True)
+    except:
+        receiver_address=''
+        return redirect('address_none')
+
 
     if request.method == 'POST':
-            customer = request.user
-            receiver_address=Address.objects.get(customer=customer,default_address=True)
+
             order = Order.objects.create(customer=customer,order_address=receiver_address)
             for item in cart:
                 OrderItem.objects.create(order=order,
@@ -120,7 +125,8 @@ def checkout(request):
             cart.clear()
 
 
-    return render(request, 'store/checkout.html', {'cart': cart,'address':address})
+    return render(request, 'store/checkout.html', {'cart': cart,'address':receiver_address})
+
 
 def search(request):
     query = request.GET.get('search')
@@ -128,7 +134,10 @@ def search(request):
         searchproduct= Product.objects.filter(title=query)
     return render(request,'store/search_result.html',{'searchproduct':searchproduct})
 
-
+@login_required
+def address_none(request):
+    message='آدرس پیش فرضی برای شما وجود ندارد .لطفا به لینک زیر وارد شوید و پس از ایجاد آدرس یا انتخاب یکی از آدرس ها به عنوان آدرس پیش فرض به صفحه پرداخت مراجعه کنید.'
+    return render(request, 'store/address_none.html', {'message':message})
 @login_required
 def account_order(request):
         user=request.user

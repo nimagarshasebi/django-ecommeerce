@@ -1,0 +1,10 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="col-8 none_address_block">
+<p >{{message}}</p>
+<a class="to_address btn btn-primary" href="{% url 'address' %}">افزودن آدرس</a>
+</div>
+
+{% endblock content %}

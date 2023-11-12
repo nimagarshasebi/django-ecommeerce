@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm,SetPasswordForm,PasswordchangeForm
+from .forms import DeleteAddress,UpdateProfile, RegisterCustomer, LoginForm, AddressForm, DefaultAddressButton,PasswordresetForm,SetPasswordForm,PasswordchangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordContextMixin,PasswordChangeView
@@ -76,6 +76,7 @@ def showaddress(request):
     return render(request, 'users/show_address.html', {'addresses': addresses})
 
 
+@login_required
 def set_default_address(request):
     if request.method == 'POST':
         form = DefaultAddressButton(request.POST)
@@ -84,6 +85,16 @@ def set_default_address(request):
             default_address = form.cleaned_data['default_address']
             Address.objects.filter(customer=request.user).update(default_address=False)
             Address.objects.filter(id=address_id).update(default_address=True)
+            return redirect('address')
+    return redirect('home')
+
+@login_required
+def delete_address(request):
+    if request.method == 'POST':
+        form = DeleteAddress(request.POST)
+        if form.is_valid():
+            address_id = request.POST.get('address_id')
+            Address.objects.filter(id=address_id).delete()
             return redirect('address')
     return redirect('home')
 

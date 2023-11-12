@@ -30,13 +30,18 @@
 									<br><strong>خیابان:</strong> {{address.street_address}}
 									<br><strong>کدپستی:</strong> {{address.postal_code}}</div>
 								<div class="address-card__footer">
-									<a href="" class="btn btn-primary btnedit">ویرایش</a>
-									<a href="" class="btn btn-danger btnremove">حذف</a>
-								 <form method="POST" action="{% url 'set-default-address' %}">
+
+									<form class="addressbtn" method="POST" action="{% url 'delete-address' %}">
 									 {% csrf_token %}
 									 {{form}}
 									 <input type="hidden" name="address_id" value="{{address.id}}">
-									 <button class="btn" type="submit"> پیش فرض</button>
+									 <button class="addressbtn btn btn-danger" type="submit"> حذف</button>
+								 </form>
+								 <form class="addressbtn"  method="POST" action="{% url 'set-default-address' %}">
+									 {% csrf_token %}
+									 {{form}}
+									 <input type="hidden" name="address_id" value="{{address.id}}">
+									 <button class="addressbtn btn btn-primary" type="submit"> پیش فرض</button>
 								 </form>
 								</div>
 							</div>
