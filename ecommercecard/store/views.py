@@ -141,10 +141,8 @@ def address_none(request):
 @login_required
 def account_order(request):
         user=request.user
-        default_address = Address.objects.get(customer=request.user,default_address=True)
         transactions=Transaction.objects.filter(customer=user)
-        context={'default_address':default_address,'transactions':transactions,'user':user}
-
+        context={'transactions':transactions,'user':user}
         return render(request, 'store/account_order.html', context)
 
 @login_required
